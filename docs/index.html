@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script>/* Warm the CorvusDevs apps registry during parse so the carousel has
+       its data ready by the time its script runs. */
+    window.__corvusAppsPromise=fetch('https://corvusdevs.github.io/apps.json',{cache:'default'}).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;});</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Corvus Display: Brightness &amp; Color Control for Any Mac Display</title>
     <meta name="description" content="Full brightness, color temperature, and resolution control for external and non-Apple displays on Apple Silicon Macs. Hardware DDC where available, smooth software dimming everywhere else. 14-day free trial.">
@@ -38,18 +41,9 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <style>
         /* ac-no-horizontal-scroll v1 */
-        html, body {
-            overflow-x: clip;
-            max-width: 100%;
-        }
-        img, video, iframe {
-            max-width: 100%;
-            height: auto;
-        }
-        pre, table {
-            max-width: 100%;
-            overflow-x: auto;
-        }
+        html, body { overflow-x: clip; max-width: 100%; }
+        img, video, iframe { max-width: 100%; height: auto; }
+        pre, table { max-width: 100%; overflow-x: auto; }
 
         :root {
             --bg: #0a0a0c;
@@ -75,27 +69,20 @@
         }
 
         nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 100;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
             padding: 16px 32px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: flex; justify-content: space-between; align-items: center;
             background: rgba(10, 10, 12, 0.8);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
         }
-
         .nav-brand {
             font-size: 18px; font-weight: 700;
-            color: var(--text); text-decoration: none;
-            letter-spacing: -0.3px;
+            color: var(--text); text-decoration: none; letter-spacing: -0.3px;
             display: flex; align-items: center; gap: 10px;
         }
         .nav-brand img { width: 36px; height: 36px; border-radius: 9px; display: block; }
         .nav-brand span { color: var(--accent); }
-
         .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
         .nav-links a { font-size: 14px; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
         .nav-links a:hover { color: var(--text); }
@@ -104,42 +91,42 @@
         .hero-icon { width: 112px; height: 112px; border-radius: 26px; margin-bottom: 28px; }
         .hero h1 {
             font-size: 64px; font-weight: 800;
-            letter-spacing: -3px; line-height: 1.05;
-            margin-bottom: 20px;
+            letter-spacing: -3px; line-height: 1.05; margin-bottom: 20px;
             background: linear-gradient(135deg, #ffffff 0%, var(--accent-light) 100%);
             -webkit-background-clip: text; background-clip: text;
             -webkit-text-fill-color: transparent; color: transparent;
+            display: inline-flex; align-items: flex-start; gap: 12px;
+        }
+        .beta-tag {
+            -webkit-text-fill-color: var(--accent);
+            color: var(--accent);
+            font-size: 18px; font-weight: 700;
+            letter-spacing: 1px; text-transform: uppercase;
+            border: 1.5px solid var(--accent);
+            border-radius: 8px; padding: 4px 10px;
+            margin-top: 8px;
+            background: var(--accent-dim);
         }
         .hero .subtitle {
             font-size: 19px; color: var(--text-secondary);
-            max-width: 600px; margin: 0 auto 40px;
-            font-weight: 400; line-height: 1.6;
+            max-width: 600px; margin: 0 auto 40px; font-weight: 400; line-height: 1.6;
         }
         .hero-cta {
             display: inline-flex; align-items: center; gap: 10px;
-            padding: 16px 36px;
-            background: var(--accent); color: #fff;
-            font-size: 16px; font-weight: 600;
-            border-radius: 14px; text-decoration: none;
-            transition: all 0.2s; border: none; cursor: pointer;
+            padding: 16px 36px; background: var(--accent); color: #fff;
+            font-size: 16px; font-weight: 600; border-radius: 14px;
+            text-decoration: none; transition: all 0.2s; border: none; cursor: pointer;
         }
-        .hero-cta:hover {
-            filter: brightness(1.15);
-            transform: translateY(-1px);
-            box-shadow: 0 8px 32px rgba(45, 127, 249, 0.3);
-        }
+        .hero-cta:hover { filter: brightness(1.15); transform: translateY(-1px); box-shadow: 0 8px 32px rgba(45, 127, 249, 0.3); }
         .hero-cta svg { width: 20px; height: 20px; }
         .hero-free { display: block; margin-top: 14px; font-size: 14px; color: var(--text-secondary); }
 
         .section-label {
-            font-size: 13px; font-weight: 600;
-            text-transform: uppercase; letter-spacing: 1.5px;
-            color: var(--accent); text-align: center;
-            margin-bottom: 12px;
+            font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--accent); text-align: center; margin-bottom: 12px;
         }
         .section-title {
-            font-size: 44px; font-weight: 700;
-            text-align: center; letter-spacing: -1.5px;
+            font-size: 44px; font-weight: 700; text-align: center; letter-spacing: -1.5px;
             margin-bottom: 56px; line-height: 1.1;
         }
         .gradient-text {
@@ -150,18 +137,13 @@
         .features { max-width: 960px; margin: 0 auto; padding: 130px 24px 100px; }
         .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         .feature-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
-            transition: border-color 0.3s, transform 0.3s;
+            background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+            padding: 32px; transition: border-color 0.3s, transform 0.3s;
         }
         .feature-card:hover { border-color: rgba(45, 127, 249, 0.3); }
         .feature-icon {
-            width: 48px; height: 48px; border-radius: 12px;
-            background: var(--accent-dim);
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 16px;
+            width: 48px; height: 48px; border-radius: 12px; background: var(--accent-dim);
+            display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
             box-shadow: 0 0 20px rgba(45, 127, 249, 0.15);
         }
         .feature-icon svg { width: 24px; height: 24px; }
@@ -170,16 +152,13 @@
 
         .features-list { margin-top: 32px; display: flex; flex-direction: column; gap: 4px; }
         .feature-row {
-            display: grid; grid-template-columns: 56px 1fr; gap: 18px;
-            align-items: start; padding: 18px 20px; border-radius: 12px;
-            transition: background 0.2s;
+            display: grid; grid-template-columns: 56px 1fr; gap: 18px; align-items: start;
+            padding: 18px 20px; border-radius: 12px; transition: background 0.2s;
         }
         .feature-row:hover { background: rgba(255,255,255,0.02); }
         .feature-row__icon {
-            width: 40px; height: 40px; border-radius: 10px;
-            background: var(--accent-dim);
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 0 16px rgba(45,127,249,0.1);
+            width: 40px; height: 40px; border-radius: 10px; background: var(--accent-dim);
+            display: flex; align-items: center; justify-content: center; box-shadow: 0 0 16px rgba(45,127,249,0.1);
         }
         .feature-row__icon svg { width: 20px; height: 20px; }
         .feature-row__body h3 { font-size: 16px; font-weight: 600; margin: 0 0 4px; }
@@ -197,19 +176,13 @@
 
         .pricing { max-width: 440px; margin: 0 auto; padding: 0 24px 90px; }
         .pricing-card {
-            background: var(--surface);
-            border: 1px solid var(--accent);
-            border-radius: 20px;
-            padding: 40px 36px;
-            display: flex; flex-direction: column;
-            box-shadow: 0 0 40px rgba(45, 127, 249, 0.12), 0 0 0 1px rgba(45, 127, 249, 0.3);
-            position: relative;
+            background: var(--surface); border: 1px solid var(--accent); border-radius: 20px;
+            padding: 40px 36px; display: flex; flex-direction: column;
+            box-shadow: 0 0 40px rgba(45, 127, 249, 0.12), 0 0 0 1px rgba(45, 127, 249, 0.3); position: relative;
         }
         .pricing-badge {
-            position: absolute; top: -12px; left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent); color: #fff;
-            font-size: 12px; font-weight: 600;
+            position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+            background: var(--accent); color: #fff; font-size: 12px; font-weight: 600;
             padding: 4px 16px; border-radius: 20px; letter-spacing: 0.5px;
         }
         .pricing-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
@@ -217,17 +190,14 @@
         .pricing-card .price-sub { font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; }
         .pricing-features { list-style: none; flex: 1; margin-bottom: 28px; }
         .pricing-features li {
-            font-size: 14px; color: var(--text-secondary);
-            padding: 6px 0; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;
+            font-size: 14px; color: var(--text-secondary); padding: 6px 0;
+            display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;
         }
         .pricing-features li::before { content: '\2713'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
         .pricing-btn {
-            display: block; text-align: center;
-            padding: 15px 24px; border-radius: 12px;
-            font-size: 15px; font-weight: 600;
-            text-decoration: none; transition: all 0.2s;
-            border: none; cursor: pointer; width: 100%;
-            background: var(--accent); color: #fff;
+            display: block; text-align: center; padding: 15px 24px; border-radius: 12px;
+            font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s;
+            border: none; cursor: pointer; width: 100%; background: var(--accent); color: #fff;
         }
         .pricing-btn:hover { filter: brightness(1.15); box-shadow: 0 8px 32px rgba(45, 127, 249, 0.3); }
         .pricing-trial { display: block; text-align: center; margin-top: 14px; font-size: 13px; color: var(--text-secondary); text-decoration: none; }
@@ -241,18 +211,13 @@
         .footer-brand .logo span { color: var(--accent); }
         .footer-brand p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
         .footer-col h4 {
-            font-size: 12px; font-weight: 600;
-            text-transform: uppercase; letter-spacing: 1px;
+            font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
             color: var(--text-secondary); margin-bottom: 14px;
         }
-        .footer-col a {
-            display: block; font-size: 14px; color: var(--text);
-            text-decoration: none; margin-bottom: 10px; transition: color 0.2s;
-        }
+        .footer-col a { display: block; font-size: 14px; color: var(--text); text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
         .footer-col a:hover { color: var(--accent); }
         .footer-bottom {
-            margin-top: 40px; padding-top: 24px;
-            border-top: 1px solid var(--border);
+            margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border);
             display: flex; justify-content: space-between; align-items: center;
         }
         .footer-bottom p { font-size: 12px; color: var(--text-secondary); }
@@ -263,38 +228,35 @@
 
         .success-overlay {
             display: none; position: fixed; inset: 0; z-index: 9999;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             align-items: center; justify-content: center;
         }
         .success-overlay.visible { display: flex; }
         .success-card {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: 24px; padding: 48px; max-width: 480px; width: 90%;
-            text-align: center; animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            background: var(--surface); border: 1px solid var(--border); border-radius: 24px;
+            padding: 48px; max-width: 480px; width: 90%; text-align: center;
+            animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .success-card .icon { font-size: 56px; margin-bottom: 20px; }
         .success-card h2 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
         .success-card .sub { color: var(--text-secondary); font-size: 15px; margin-bottom: 28px; }
         .license-key-box {
-            background: var(--bg); border: 1px solid var(--border);
-            border-radius: 12px; padding: 16px 20px; margin-bottom: 12px; position: relative;
+            background: var(--bg); border: 1px solid var(--border); border-radius: 12px;
+            padding: 16px 20px; margin-bottom: 12px; position: relative;
         }
         .license-key-box label {
-            display: block; font-size: 11px; font-weight: 600;
-            text-transform: uppercase; letter-spacing: 1px;
-            color: var(--text-secondary); margin-bottom: 6px;
+            display: block; font-size: 11px; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 1px; color: var(--text-secondary); margin-bottom: 6px;
         }
         .license-key-box code {
             font-size: 16px; font-weight: 600; color: var(--accent-light);
             font-family: 'SF Mono', Menlo, monospace; word-break: break-all; user-select: all;
         }
         .copy-btn {
-            position: absolute; top: 12px; right: 12px;
-            background: var(--surface-2); border: 1px solid var(--border);
-            color: var(--text-secondary); padding: 6px 12px; border-radius: 8px;
-            font-size: 12px; cursor: pointer; transition: all 0.2s;
+            position: absolute; top: 12px; right: 12px; background: var(--surface-2);
+            border: 1px solid var(--border); color: var(--text-secondary);
+            padding: 6px 12px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: all 0.2s;
         }
         .copy-btn:hover { background: var(--border); color: var(--text); }
         .email-notice {
@@ -322,6 +284,7 @@
         }
         @media (max-width: 600px) {
             .hero h1 { font-size: 40px; letter-spacing: -2px; }
+            .beta-tag { font-size: 13px; padding: 3px 8px; margin-top: 5px; }
             .hero .subtitle { font-size: 16px; }
             .hero { padding-top: 120px; }
             .section-title { font-size: 30px; }
@@ -335,24 +298,21 @@
 
         /* ac-nav-hamburger v1 */
         .nav-toggle {
-            display: none; background: none;
-            border: 1px solid var(--border, rgba(255,255,255,0.12));
-            border-radius: 8px; color: var(--text, #e8e8ed);
-            cursor: pointer; padding: 8px; align-items: center; justify-content: center;
+            display: none; background: none; border: 1px solid var(--border, rgba(255,255,255,0.12));
+            border-radius: 8px; color: var(--text, #e8e8ed); cursor: pointer; padding: 8px;
+            align-items: center; justify-content: center;
         }
         .nav-toggle svg { display: block; }
         .nav-brand { flex-shrink: 0; }
         @media (max-width: 720px) {
             .nav-toggle { display: inline-flex; }
             .nav-links {
-                display: none; position: absolute; top: 100%; left: 0; right: 0;
-                flex-direction: column;
+                display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column;
                 background: var(--bg, rgba(10,10,12,0.95));
                 border-top: 1px solid var(--border, rgba(255,255,255,0.08));
                 border-bottom: 1px solid var(--border, rgba(255,255,255,0.08));
                 padding: 4px 24px 8px; margin: 0; list-style: none; gap: 0;
-                -webkit-backdrop-filter: saturate(180%) blur(20px);
-                backdrop-filter: saturate(180%) blur(20px);
+                -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px);
             }
             .nav-links li { width: 100%; }
             .nav-links li a { display: block; padding: 14px 0; border-top: 1px solid var(--border, rgba(255,255,255,0.08)); }
@@ -366,6 +326,60 @@
             body { min-height: 0; }
             footer { padding-bottom: 24px; padding-top: 24px; }
         }
+
+        /* page-carousel template v2 (2026-05-27) */
+        .corvus-carousel { max-width: 1200px; margin: 80px auto 40px; padding: 0 24px; }
+        .corvus-carousel__title { font-size: 32px; font-weight: 700; margin: 0 0 8px; letter-spacing: -0.5px; color: var(--text, #fff); }
+        .corvus-carousel__sub { font-size: 15px; color: var(--text-secondary, #9a9a9f); margin: 0 0 28px; }
+        .corvus-carousel__viewport { position: relative; }
+        .corvus-carousel__track {
+            display: flex; gap: 16px; overflow-x: auto; overflow-y: visible;
+            scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 4px 4px 16px; margin: 0 -4px;
+            scrollbar-width: thin; touch-action: pan-x; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;
+            --fade-l: 0px; --fade-r: 0px;
+            -webkit-mask-image: linear-gradient(to right, transparent 0, black var(--fade-l), black calc(100% - var(--fade-r)), transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0, black var(--fade-l), black calc(100% - var(--fade-r)), transparent 100%);
+            transition: -webkit-mask-image 0.25s, mask-image 0.25s;
+        }
+        .corvus-carousel__track::-webkit-scrollbar { height: 6px; }
+        .corvus-carousel__track::-webkit-scrollbar-thumb { background: var(--border, #2a2a30); border-radius: 3px; }
+        .corvus-carousel__card {
+            flex: 0 0 280px; scroll-snap-align: start; background: var(--surface, #18181c);
+            border: 1px solid var(--border, #2a2a30); border-radius: 14px; padding: 20px;
+            text-decoration: none; color: var(--text, #fff); display: flex; flex-direction: column; gap: 12px;
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+        }
+        .corvus-carousel__card:hover { transform: translateY(-2px); border-color: var(--accent, #2d7ff9); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+        .corvus-carousel__card-icon { width: 56px; height: 56px; border-radius: 12px; object-fit: contain; }
+        .corvus-carousel__card-name { font-size: 17px; font-weight: 600; color: var(--text, #fff); line-height: 1.2; }
+        .corvus-carousel__card-tagline { font-size: 12px; color: var(--accent, #2d7ff9); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+        .corvus-carousel__card-desc {
+            font-size: 13px; color: var(--text-secondary, #9a9a9f); line-height: 1.5; margin: 0; flex: 1;
+            display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+        }
+        .corvus-carousel__card-cta { font-size: 13px; font-weight: 600; color: var(--accent, #2d7ff9); display: inline-flex; align-items: center; gap: 4px; margin-top: auto; }
+        .corvus-carousel__nav {
+            position: absolute; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border-radius: 50%;
+            background: var(--accent, #2d7ff9); border: 1px solid var(--accent, #2d7ff9); color: white; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(45,127,249,0.35);
+            transition: filter 0.2s, transform 0.2s; z-index: 2;
+        }
+        .corvus-carousel__nav:hover { filter: brightness(1.1); transform: translateY(-50%) scale(1.05); }
+        .corvus-carousel__nav:disabled { background: var(--surface, #18181c); color: var(--text-secondary, #9a9a9f); border-color: var(--border, #2a2a30); box-shadow: none; cursor: default; filter: none; }
+        .corvus-carousel__nav svg { width: 20px; height: 20px; fill: none; }
+        .corvus-carousel__nav--prev { left: -18px; }
+        .corvus-carousel__nav--next { right: -18px; }
+        @media (max-width: 600px) {
+            .corvus-carousel { margin-top: 48px; }
+            .corvus-carousel__title { font-size: 26px; }
+            .corvus-carousel__card { flex-basis: 240px; padding: 16px; }
+            .corvus-carousel__nav { display: none; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .corvus-carousel__track { scroll-behavior: auto; transition: none; }
+            .corvus-carousel__card { transition: none; }
+        }
+        .corvus-carousel:has(.corvus-carousel__track:empty) { display: none; }
     </style>
 </head>
 <body>
@@ -381,11 +395,11 @@
 
     <section class="hero">
         <img src="icon.png" alt="Corvus Display" class="hero-icon">
-        <h1>Corvus Display</h1>
+        <h1>Corvus Display <span class="beta-tag">Beta</span></h1>
         <p class="subtitle">Full brightness, color temperature, and resolution control for external and non-Apple displays. Hardware DDC where it is available, smooth software dimming everywhere else, all from your menu bar.</p>
         <a href="https://github.com/CorvusDevs/CorvusDisplay/releases/latest" class="hero-cta" id="hero-download">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            <span>Start Free Trial</span>
+            <span>Free Download</span>
         </a>
         <span class="hero-free">14-day free trial &middot; No credit card &middot; macOS 14+ &middot; Apple Silicon</span>
     </section>
@@ -401,9 +415,19 @@
                 <p>Dim or brighten external and non-Apple monitors that macOS normally locks. Hardware DDC control when the panel supports it, seamless software dimming when it does not.</p>
             </div>
             <div class="feature-card fade-in">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 0 12 6 6 0 0 1 0 6 9 9 0 0 1 0-18z"/></svg></div>
+                <h3>Go Darker Than the Minimum</h3>
+                <p>A gamma and overlay dimming layer takes the screen well below the panel's hardware floor for comfortable late-night brightness, without a washed-out backlight glow.</p>
+            </div>
+            <div class="feature-card fade-in">
                 <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg></div>
                 <h3>Color Temperature</h3>
-                <p>Warm the screen for night, cool it for day. Smooth color temperature on every connected display, set independently per monitor.</p>
+                <p>Warm the screen for night, cool it for day. Smooth color temperature on every connected display, set independently per monitor, with Warm, Paper, and Dark-room tints.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2a10 10 0 1 0 0 20c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1-.25-.27-.39-.62-.39-1 0-.83.67-1.5 1.5-1.5H16a6 6 0 0 0 6-6c0-5.52-4.48-10-10-10z"/></svg></div>
+                <h3>Color Profiles</h3>
+                <p>Assign any installed ICC color profile per display and switch between them in a click, so each monitor renders color exactly the way you want.</p>
             </div>
             <div class="feature-card fade-in">
                 <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
@@ -421,35 +445,60 @@
                 <p>One click switches brightness, warmth, and color profile together. Ready-made Reading, Movie, Gaming, and Evening presets, plus your own.</p>
             </div>
             <div class="feature-card fade-in">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg></div>
+                <h3>Schedules &amp; Clock Mode</h3>
+                <p>Ramp brightness and warmth across the day from your sunrise and sunset, so the screen eases warmer and dimmer into the evening on its own.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg></div>
+                <h3>Auto-Brightness</h3>
+                <p>Follow the Mac's ambient light sensor, or adapt each display to its own on-screen content so dark and bright scenes stay comfortable.</p>
+            </div>
+            <div class="feature-card fade-in">
                 <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
                 <h3>Keep Awake</h3>
                 <p>Stop the display from sleeping during long reads or presentations. Optionally hold it awake only while a chosen app is running.</p>
             </div>
             <div class="feature-card fade-in">
-                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg></div>
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div>
                 <h3>Sleep Timer</h3>
                 <p>Send the screen, or the whole Mac, to sleep after a countdown. Lock, restart, and shut down options are built in.</p>
             </div>
             <div class="feature-card fade-in">
-                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="6" y1="10" x2="6" y2="10"/><line x1="10" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="14" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/></svg></div>
-                <h3>Menu Bar &amp; Hotkeys</h3>
-                <p>Everything lives in the menu bar. Global keyboard shortcuts and media-key brightness control put every adjustment a keystroke away.</p>
-            </div>
-            <div class="feature-card fade-in">
                 <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="14" height="10" rx="1"/><rect x="10" y="11" width="12" height="8" rx="1"/></svg></div>
-                <h3>Multi-Display</h3>
-                <p>Per-monitor control, mirroring with an automatic safety net, and a visual arrangement view for multi-display setups.</p>
+                <h3>Multi-Display &amp; Mirroring</h3>
+                <p>Independent control for every monitor, mirroring with an automatic safety net, and a visual arrangement view for multi-display setups.</p>
             </div>
         </div>
 
         <div class="features-list">
             <div class="feature-row fade-in">
-                <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg></div>
-                <div class="feature-row__body"><h3>Ambient adaptation</h3><p>Optionally adapt each display's brightness to its own on-screen content, so dark and bright scenes stay comfortable.</p></div>
+                <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="4.2" y1="10.2" x2="5.6" y2="11.6"/><line x1="1" y1="18" x2="3" y2="18"/><line x1="21" y1="18" x2="23" y2="18"/><line x1="18.4" y1="11.6" x2="19.8" y2="10.2"/></svg></div>
+                <div class="feature-row__body"><h3>Night Shift &amp; True Tone, in one place</h3><p>Toggle and tune the system color features alongside Corvus Display's own warmth and a one-click Dark Mode switch.</p></div>
             </div>
             <div class="feature-row fade-in">
-                <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div>
-                <div class="feature-row__body"><h3>Night Shift &amp; True Tone control</h3><p>Toggle and tune the system color features alongside Corvus Display's own warmth, from one place.</p></div>
+                <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+                <div class="feature-row__body"><h3>Fix washed-out monitors</h3><p>Force full RGB range and 8-bit color to correct the dull, grey look some displays show over HDMI and USB-C.</p></div>
+            </div>
+            <div class="feature-row fade-in">
+                <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.2 4.2l2.8 2.8M17 17l2.8 2.8M1 12h4M19 12h4M4.2 19.8L7 17M17 7l2.8-2.8"/></svg></div>
+                <div class="feature-row__body"><h3>Hardware DDC controls</h3><p>Drive the monitor's own contrast, volume, and input source over DDC, so you can switch inputs and tune the panel without its clunky on-screen buttons.</p></div>
+            </div>
+            <div class="feature-row fade-in">
+                <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="2" y1="3" x2="22" y2="17"/></svg></div>
+                <div class="feature-row__body"><h3>Black out and FaceLight</h3><p>Blank a display you are not using to save power and distraction, or flood the screen with warm light for a flattering video call.</p></div>
+            </div>
+            <div class="feature-row fade-in">
+                <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="7" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="17" cy="12" r="1"/></svg></div>
+                <div class="feature-row__body"><h3>Menu bar, hotkeys, and media keys</h3><p>Everything lives in the menu bar. Use global keyboard shortcuts, scroll on the menu-bar icon, or the brightness keys to drive external displays.</p></div>
+            </div>
+            <div class="feature-row fade-in">
+                <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.5 6.5L21 9l-5 4 1.5 7L12 16l-5.5 4L8 13 3 9l6.5-.5z"/></svg></div>
+                <div class="feature-row__body"><h3>Shortcuts &amp; automation</h3><p>App Intents and a local control API let Shortcuts, scripts, and Stream Deck-style tools set brightness, presets, and more.</p></div>
+            </div>
+            <div class="feature-row fade-in">
+                <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20"/></svg></div>
+                <div class="feature-row__body"><h3>33 languages</h3><p>Fully localized, with a built-in language picker. Right-to-left support for Arabic and Hebrew.</p></div>
             </div>
             <div class="feature-row fade-in">
                 <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
@@ -495,7 +544,7 @@
                 <li>14-day free trial, no credit card</li>
             </ul>
             <button class="pricing-btn" id="buy" onclick="openCheckout()">Buy Corvus Display</button>
-            <a href="https://github.com/CorvusDevs/CorvusDisplay/releases/latest" class="pricing-trial">or start the 14-day free trial</a>
+            <a href="https://github.com/CorvusDevs/CorvusDisplay/releases/latest" class="pricing-trial">or download the 14-day free trial</a>
         </div>
     </section>
 
@@ -522,6 +571,21 @@
             </div>
         </div>
     </div>
+
+    <!-- page-carousel template v2 (2026-05-27) -->
+    <section id="corvus-carousel" class="corvus-carousel" aria-labelledby="corvus-carousel-title" data-current-slug="CorvusDisplay">
+        <h2 id="corvus-carousel-title" class="corvus-carousel__title">More from CorvusDevs</h2>
+        <p class="corvus-carousel__sub">Privacy-first apps for macOS, iOS, and Safari.</p>
+        <div class="corvus-carousel__viewport">
+            <button class="corvus-carousel__nav corvus-carousel__nav--prev" type="button" aria-label="Previous">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <div class="corvus-carousel__track" role="list"></div>
+            <button class="corvus-carousel__nav corvus-carousel__nav--next" type="button" aria-label="Next">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+            </button>
+        </div>
+    </section>
 
     <footer>
         <div class="footer-grid">
@@ -569,9 +633,7 @@
         Paddle.Initialize({
             token: PADDLE_CLIENT_TOKEN,
             eventCallback: function(event) {
-                if (event.name === 'checkout.completed') {
-                    handleCheckoutCompleted(event.data);
-                }
+                if (event.name === 'checkout.completed') { handleCheckoutCompleted(event.data); }
             }
         });
 
@@ -597,24 +659,84 @@
             });
         }
 
-        function closeSuccess() {
-            document.getElementById('success-overlay').classList.remove('visible');
-        }
+        function closeSuccess() { document.getElementById('success-overlay').classList.remove('visible'); }
 
         // Reveal-on-scroll for .fade-in elements.
         (function() {
             const els = document.querySelectorAll('.fade-in');
-            if (!('IntersectionObserver' in window)) {
-                els.forEach(function(el){ el.classList.add('visible'); });
-                return;
-            }
+            if (!('IntersectionObserver' in window)) { els.forEach(function(el){ el.classList.add('visible'); }); return; }
             const io = new IntersectionObserver(function(entries) {
-                entries.forEach(function(e) {
-                    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-                });
+                entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
             }, { threshold: 0.12 });
             els.forEach(function(el){ io.observe(el); });
         })();
+    </script>
+
+    <!-- page-carousel template v2 (2026-05-27): fetch apps.json, filter self, render -->
+    <script>
+    (function() {
+        const APPS_JSON_URL = 'https://corvusdevs.github.io/apps.json';
+        const section = document.getElementById('corvus-carousel');
+        if (!section) return;
+        const track = section.querySelector('.corvus-carousel__track');
+        if (!track) return;
+        function getCurrentSlug() {
+            const explicit = section.getAttribute('data-current-slug');
+            if (explicit) return explicit.toLowerCase();
+            const segs = location.pathname.split('/').filter(Boolean);
+            return segs.length ? segs[0].toLowerCase() : '';
+        }
+        function buildCard(app) {
+            const a = document.createElement('a');
+            a.className = 'corvus-carousel__card';
+            a.href = app.url; a.setAttribute('role', 'listitem');
+            const img = document.createElement('img');
+            img.className = 'corvus-carousel__card-icon';
+            img.src = app.icon; img.alt = ''; img.loading = 'lazy'; img.width = 56; img.height = 56;
+            const tag = document.createElement('div');
+            tag.className = 'corvus-carousel__card-tagline'; tag.textContent = app.tagline || '';
+            const name = document.createElement('div');
+            name.className = 'corvus-carousel__card-name'; name.textContent = app.name;
+            const desc = document.createElement('p');
+            desc.className = 'corvus-carousel__card-desc'; desc.textContent = app.description || '';
+            const cta = document.createElement('span');
+            cta.className = 'corvus-carousel__card-cta'; cta.textContent = 'Learn more →';
+            a.append(img, tag, name, desc, cta);
+            return a;
+        }
+        function wireNav() {
+            const prev = section.querySelector('.corvus-carousel__nav--prev');
+            const next = section.querySelector('.corvus-carousel__nav--next');
+            if (!prev || !next) return;
+            const FADE_PX = 80;
+            const stepFn = () => Math.max(track.clientWidth * 0.8, 280 + 16);
+            prev.addEventListener('click', () => track.scrollBy({ left: -stepFn(), behavior: 'smooth' }));
+            next.addEventListener('click', () => track.scrollBy({ left: stepFn(), behavior: 'smooth' }));
+            function sync() {
+                const atStart = track.scrollLeft <= 4;
+                const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+                prev.disabled = atStart; next.disabled = atEnd;
+                track.style.setProperty('--fade-l', atStart ? '0px' : FADE_PX + 'px');
+                track.style.setProperty('--fade-r', atEnd ? '0px' : FADE_PX + 'px');
+            }
+            track.addEventListener('scroll', sync, { passive: true });
+            window.addEventListener('resize', sync, { passive: true });
+            sync();
+        }
+        (window.__corvusAppsPromise || fetch(APPS_JSON_URL, { cache: 'default' }).then(r => r.ok ? r.json() : null))
+            .then(data => {
+                const apps = (data && Array.isArray(data.apps)) ? data.apps : [];
+                const currentSlug = getCurrentSlug();
+                const filtered = apps.filter(a => (a.slug || '').toLowerCase() !== currentSlug);
+                if (!filtered.length) { section.style.display = 'none'; return; }
+                filtered.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+                const frag = document.createDocumentFragment();
+                for (const app of filtered) frag.appendChild(buildCard(app));
+                track.appendChild(frag);
+                wireNav();
+            })
+            .catch(() => { section.style.display = 'none'; });
+    })();
     </script>
 </body>
 </html>
