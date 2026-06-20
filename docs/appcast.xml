@@ -6,6 +6,13 @@
         <description>Most recent updates to Corvus Display.</description>
         <language>en</language>
         <item>
+            <title>Version 0.9.1</title>
+            <pubDate>Sat, 20 Jun 2026 16:05:52 +0000</pubDate>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[Fixes oversized country flags in the in-app language picker.]]></description>
+            <enclosure url="https://github.com/CorvusDevs/CorvusDisplay/releases/download/v0.9.1/CorvusDisplay-0.9.1.zip" sparkle:version="2" sparkle:shortVersionString="0.9.1" sparkle:edSignature="HagqUtbsbuS/tx3clusXLfOMl7OrfRYtKCaR9Cu+VEK1cnQMGB/BNxHePeHmpcCUWHD9SB1ZkIdhK53iimBeAA==" length="7772851" type="application/octet-stream" />
+        </item>
+        <item>
             <title>Version 0.9.0</title>
             <pubDate>Sat, 20 Jun 2026 13:22:17 +0000</pubDate>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
