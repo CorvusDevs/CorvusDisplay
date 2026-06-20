@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Corvus Display: Brightness &amp; Color Control for Any Mac Display</title>
+    <meta name="description" content="Full brightness, color temperature, and resolution control for external and non-Apple displays on Apple Silicon Macs. Hardware DDC where available, smooth software dimming everywhere else. 14-day free trial.">
+    <link rel="canonical" href="https://corvusdevs.github.io/CorvusDisplay/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://corvusdevs.github.io/CorvusDisplay/">
+    <meta property="og:title" content="Corvus Display: Brightness &amp; Color Control for Any Mac Display">
+    <meta property="og:description" content="Control brightness, color temperature, and resolution on external and non-Apple displays. Built for Apple Silicon. 14-day free trial.">
+    <meta property="og:image" content="https://corvusdevs.github.io/CorvusDisplay/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="CorvusDevs">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Corvus Display: Brightness &amp; Color Control for Any Mac Display">
+    <meta name="twitter:description" content="Brightness, color temperature, and resolution control for external and non-Apple displays. Built for Apple Silicon.">
+    <meta name="twitter:image" content="https://corvusdevs.github.io/CorvusDisplay/og-image.png">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="display control, brightness, ddc, color temperature, macos, external monitor, non-apple display, apple silicon, hidpi, lunar, betterdisplay">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Corvus Display",
+        "description": "Brightness, color temperature, and resolution control for external and non-Apple displays on Apple Silicon Macs.",
+        "operatingSystem": "macOS 14.0+",
+        "applicationCategory": "UtilitiesApplication",
+        "offers": { "@type": "Offer", "price": "6.99", "priceCurrency": "USD", "name": "Corvus Display" },
+        "author": { "@type": "Organization", "name": "CorvusDevs", "url": "https://corvusdevs.github.io" }
+    }
+    </script>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <style>
+        /* ac-no-horizontal-scroll v1 */
+        html, body {
+            overflow-x: clip;
+            max-width: 100%;
+        }
+        img, video, iframe {
+            max-width: 100%;
+            height: auto;
+        }
+        pre, table {
+            max-width: 100%;
+            overflow-x: auto;
+        }
+
+        :root {
+            --bg: #0a0a0c;
+            --surface: #111114;
+            --surface-2: #19191e;
+            --border: #252530;
+            --text: #e8e8ed;
+            --text-secondary: #7c7c84;
+            --accent: #2d7ff9;
+            --accent-light: #5a9dff;
+            --accent-dim: rgba(45, 127, 249, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+        }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 12, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+        }
+
+        .nav-brand {
+            font-size: 18px; font-weight: 700;
+            color: var(--text); text-decoration: none;
+            letter-spacing: -0.3px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .nav-brand img { width: 36px; height: 36px; border-radius: 9px; display: block; }
+        .nav-brand span { color: var(--accent); }
+
+        .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+        .nav-links a { font-size: 14px; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text); }
+
+        .hero { text-align: center; padding: 150px 24px 0; }
+        .hero-icon { width: 112px; height: 112px; border-radius: 26px; margin-bottom: 28px; }
+        .hero h1 {
+            font-size: 64px; font-weight: 800;
+            letter-spacing: -3px; line-height: 1.05;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent-light) 100%);
+            -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent; color: transparent;
+        }
+        .hero .subtitle {
+            font-size: 19px; color: var(--text-secondary);
+            max-width: 600px; margin: 0 auto 40px;
+            font-weight: 400; line-height: 1.6;
+        }
+        .hero-cta {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 16px 36px;
+            background: var(--accent); color: #fff;
+            font-size: 16px; font-weight: 600;
+            border-radius: 14px; text-decoration: none;
+            transition: all 0.2s; border: none; cursor: pointer;
+        }
+        .hero-cta:hover {
+            filter: brightness(1.15);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 32px rgba(45, 127, 249, 0.3);
+        }
+        .hero-cta svg { width: 20px; height: 20px; }
+        .hero-free { display: block; margin-top: 14px; font-size: 14px; color: var(--text-secondary); }
+
+        .section-label {
+            font-size: 13px; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--accent); text-align: center;
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-size: 44px; font-weight: 700;
+            text-align: center; letter-spacing: -1.5px;
+            margin-bottom: 56px; line-height: 1.1;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #2d7ff9 0%, #5a9dff 40%, #fff 100%);
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .features { max-width: 960px; margin: 0 auto; padding: 130px 24px 100px; }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .feature-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .feature-card:hover { border-color: rgba(45, 127, 249, 0.3); }
+        .feature-icon {
+            width: 48px; height: 48px; border-radius: 12px;
+            background: var(--accent-dim);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 16px;
+            box-shadow: 0 0 20px rgba(45, 127, 249, 0.15);
+        }
+        .feature-icon svg { width: 24px; height: 24px; }
+        .feature-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+        .feature-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+        .features-list { margin-top: 32px; display: flex; flex-direction: column; gap: 4px; }
+        .feature-row {
+            display: grid; grid-template-columns: 56px 1fr; gap: 18px;
+            align-items: start; padding: 18px 20px; border-radius: 12px;
+            transition: background 0.2s;
+        }
+        .feature-row:hover { background: rgba(255,255,255,0.02); }
+        .feature-row__icon {
+            width: 40px; height: 40px; border-radius: 10px;
+            background: var(--accent-dim);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 16px rgba(45,127,249,0.1);
+        }
+        .feature-row__icon svg { width: 20px; height: 20px; }
+        .feature-row__body h3 { font-size: 16px; font-weight: 600; margin: 0 0 4px; }
+        .feature-row__body p { font-size: 14px; color: var(--text-secondary); line-height: 1.55; margin: 0; }
+        @media (max-width: 600px) {
+            .feature-row { padding: 14px 12px; gap: 14px; grid-template-columns: 44px 1fr; }
+            .feature-row__icon { width: 36px; height: 36px; }
+        }
+
+        .why { max-width: 960px; margin: 0 auto; padding: 0 24px 100px; }
+        .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .why-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+        .why-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 10px; }
+        .why-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+        .pricing { max-width: 440px; margin: 0 auto; padding: 0 24px 90px; }
+        .pricing-card {
+            background: var(--surface);
+            border: 1px solid var(--accent);
+            border-radius: 20px;
+            padding: 40px 36px;
+            display: flex; flex-direction: column;
+            box-shadow: 0 0 40px rgba(45, 127, 249, 0.12), 0 0 0 1px rgba(45, 127, 249, 0.3);
+            position: relative;
+        }
+        .pricing-badge {
+            position: absolute; top: -12px; left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent); color: #fff;
+            font-size: 12px; font-weight: 600;
+            padding: 4px 16px; border-radius: 20px; letter-spacing: 0.5px;
+        }
+        .pricing-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+        .pricing-card .price { font-size: 44px; font-weight: 800; margin: 12px 0 4px; letter-spacing: -1px; }
+        .pricing-card .price-sub { font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; }
+        .pricing-features { list-style: none; flex: 1; margin-bottom: 28px; }
+        .pricing-features li {
+            font-size: 14px; color: var(--text-secondary);
+            padding: 6px 0; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;
+        }
+        .pricing-features li::before { content: '\2713'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+        .pricing-btn {
+            display: block; text-align: center;
+            padding: 15px 24px; border-radius: 12px;
+            font-size: 15px; font-weight: 600;
+            text-decoration: none; transition: all 0.2s;
+            border: none; cursor: pointer; width: 100%;
+            background: var(--accent); color: #fff;
+        }
+        .pricing-btn:hover { filter: brightness(1.15); box-shadow: 0 8px 32px rgba(45, 127, 249, 0.3); }
+        .pricing-trial { display: block; text-align: center; margin-top: 14px; font-size: 13px; color: var(--text-secondary); text-decoration: none; }
+        .pricing-trial:hover { color: var(--text); }
+
+        .req { text-align: center; padding: 0 24px 60px; font-size: 14px; color: var(--text-secondary); }
+
+        footer { max-width: 960px; margin: 0 auto; padding: 40px 24px 60px; border-top: 1px solid var(--border); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+        .footer-brand .logo { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+        .footer-brand .logo span { color: var(--accent); }
+        .footer-brand p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+        .footer-col h4 {
+            font-size: 12px; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1px;
+            color: var(--text-secondary); margin-bottom: 14px;
+        }
+        .footer-col a {
+            display: block; font-size: 14px; color: var(--text);
+            text-decoration: none; margin-bottom: 10px; transition: color 0.2s;
+        }
+        .footer-col a:hover { color: var(--accent); }
+        .footer-bottom {
+            margin-top: 40px; padding-top: 24px;
+            border-top: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .footer-bottom p { font-size: 12px; color: var(--text-secondary); }
+        .footer-socials { display: flex; gap: 16px; }
+        .footer-socials a { color: var(--text-secondary); transition: color 0.2s; }
+        .footer-socials a:hover { color: var(--text); }
+        .footer-socials svg { width: 18px; height: 18px; }
+
+        .success-overlay {
+            display: none; position: fixed; inset: 0; z-index: 9999;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            align-items: center; justify-content: center;
+        }
+        .success-overlay.visible { display: flex; }
+        .success-card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 24px; padding: 48px; max-width: 480px; width: 90%;
+            text-align: center; animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .success-card .icon { font-size: 56px; margin-bottom: 20px; }
+        .success-card h2 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+        .success-card .sub { color: var(--text-secondary); font-size: 15px; margin-bottom: 28px; }
+        .license-key-box {
+            background: var(--bg); border: 1px solid var(--border);
+            border-radius: 12px; padding: 16px 20px; margin-bottom: 12px; position: relative;
+        }
+        .license-key-box label {
+            display: block; font-size: 11px; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1px;
+            color: var(--text-secondary); margin-bottom: 6px;
+        }
+        .license-key-box code {
+            font-size: 16px; font-weight: 600; color: var(--accent-light);
+            font-family: 'SF Mono', Menlo, monospace; word-break: break-all; user-select: all;
+        }
+        .copy-btn {
+            position: absolute; top: 12px; right: 12px;
+            background: var(--surface-2); border: 1px solid var(--border);
+            color: var(--text-secondary); padding: 6px 12px; border-radius: 8px;
+            font-size: 12px; cursor: pointer; transition: all 0.2s;
+        }
+        .copy-btn:hover { background: var(--border); color: var(--text); }
+        .email-notice {
+            font-size: 13px; color: var(--text-secondary); margin-bottom: 24px;
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+        }
+        .email-notice svg { width: 16px; height: 16px; flex-shrink: 0; }
+        .success-card .actions { display: flex; gap: 12px; justify-content: center; }
+        .success-card .actions a, .success-card .actions button {
+            padding: 12px 24px; border-radius: 10px; font-size: 15px; font-weight: 600;
+            text-decoration: none; border: none; cursor: pointer; transition: all 0.2s;
+        }
+        .success-card .actions .primary { background: var(--accent); color: #fff; }
+        .success-card .actions .secondary { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
+
+        .fade-in {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            .features-grid, .why-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+        }
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 40px; letter-spacing: -2px; }
+            .hero .subtitle { font-size: 16px; }
+            .hero { padding-top: 120px; }
+            .section-title { font-size: 30px; }
+            .features { padding-top: 90px; }
+            .features-grid, .why-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+            .success-card { padding: 32px 24px; }
+            .footer-bottom { flex-direction: column; gap: 12px; }
+            nav { padding: 14px 16px; }
+        }
+
+        /* ac-nav-hamburger v1 */
+        .nav-toggle {
+            display: none; background: none;
+            border: 1px solid var(--border, rgba(255,255,255,0.12));
+            border-radius: 8px; color: var(--text, #e8e8ed);
+            cursor: pointer; padding: 8px; align-items: center; justify-content: center;
+        }
+        .nav-toggle svg { display: block; }
+        .nav-brand { flex-shrink: 0; }
+        @media (max-width: 720px) {
+            .nav-toggle { display: inline-flex; }
+            .nav-links {
+                display: none; position: absolute; top: 100%; left: 0; right: 0;
+                flex-direction: column;
+                background: var(--bg, rgba(10,10,12,0.95));
+                border-top: 1px solid var(--border, rgba(255,255,255,0.08));
+                border-bottom: 1px solid var(--border, rgba(255,255,255,0.08));
+                padding: 4px 24px 8px; margin: 0; list-style: none; gap: 0;
+                -webkit-backdrop-filter: saturate(180%) blur(20px);
+                backdrop-filter: saturate(180%) blur(20px);
+            }
+            .nav-links li { width: 100%; }
+            .nav-links li a { display: block; padding: 14px 0; border-top: 1px solid var(--border, rgba(255,255,255,0.08)); }
+            .nav-links li:first-child a { border-top: 0; }
+            body.nav-open .nav-links { display: flex; }
+            body.nav-open .nav-toggle { background: var(--surface, rgba(255,255,255,0.06)); }
+        }
+
+        /* ac-footer-mobile v1 */
+        @media (max-width: 720px) {
+            body { min-height: 0; }
+            footer { padding-bottom: 24px; padding-top: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="nav-brand"><img src="icon.png" alt="" width="36" height="36">Corvus <span>Display</span></a>
+        <!-- ac-nav-hamburger v2 --><button class="nav-toggle" aria-label="Menu" aria-expanded="false" onclick="var o=document.body.classList.toggle('nav-open');this.setAttribute('aria-expanded',o);event.stopPropagation();"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button><script>(function(){document.addEventListener("click",function(e){if(!document.body.classList.contains("nav-open"))return;var n=document.querySelector("nav");if(n&&!n.contains(e.target)){document.body.classList.remove("nav-open");var b=document.querySelector(".nav-toggle");if(b)b.setAttribute("aria-expanded","false");}});})();</script>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#why">Why Corvus</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <img src="icon.png" alt="Corvus Display" class="hero-icon">
+        <h1>Corvus Display</h1>
+        <p class="subtitle">Full brightness, color temperature, and resolution control for external and non-Apple displays. Hardware DDC where it is available, smooth software dimming everywhere else, all from your menu bar.</p>
+        <a href="https://github.com/CorvusDevs/CorvusDisplay/releases/latest" class="hero-cta" id="hero-download">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Start Free Trial</span>
+        </a>
+        <span class="hero-free">14-day free trial &middot; No credit card &middot; macOS 14+ &middot; Apple Silicon</span>
+    </section>
+
+    <section class="features" id="features">
+        <div class="section-label fade-in">Features</div>
+        <h2 class="section-title gradient-text fade-in">Control the displays macOS ignores</h2>
+
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.2" y1="4.2" x2="5.6" y2="5.6"/><line x1="18.4" y1="18.4" x2="19.8" y2="19.8"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.2" y1="19.8" x2="5.6" y2="18.4"/><line x1="18.4" y1="5.6" x2="19.8" y2="4.2"/></svg></div>
+                <h3>Brightness, Any Display</h3>
+                <p>Dim or brighten external and non-Apple monitors that macOS normally locks. Hardware DDC control when the panel supports it, seamless software dimming when it does not.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg></div>
+                <h3>Color Temperature</h3>
+                <p>Warm the screen for night, cool it for day. Smooth color temperature on every connected display, set independently per monitor.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+                <h3>Resolution &amp; HiDPI</h3>
+                <p>Unlock crisp HiDPI scaling and resolutions your display can do but macOS hides, including retina-style modes on non-Apple panels.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></div>
+                <h3>Per-App Profiles</h3>
+                <p>Bind a brightness level or a full preset to an app. Corvus Display applies it automatically the moment that app comes forward.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></div>
+                <h3>Presets</h3>
+                <p>One click switches brightness, warmth, and color profile together. Ready-made Reading, Movie, Gaming, and Evening presets, plus your own.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+                <h3>Keep Awake</h3>
+                <p>Stop the display from sleeping during long reads or presentations. Optionally hold it awake only while a chosen app is running.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg></div>
+                <h3>Sleep Timer</h3>
+                <p>Send the screen, or the whole Mac, to sleep after a countdown. Lock, restart, and shut down options are built in.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="6" y1="10" x2="6" y2="10"/><line x1="10" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="14" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/></svg></div>
+                <h3>Menu Bar &amp; Hotkeys</h3>
+                <p>Everything lives in the menu bar. Global keyboard shortcuts and media-key brightness control put every adjustment a keystroke away.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="14" height="10" rx="1"/><rect x="10" y="11" width="12" height="8" rx="1"/></svg></div>
+                <h3>Multi-Display</h3>
+                <p>Per-monitor control, mirroring with an automatic safety net, and a visual arrangement view for multi-display setups.</p>
+            </div>
+        </div>
+
+        <div class="features-list">
+            <div class="feature-row fade-in">
+                <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg></div>
+                <div class="feature-row__body"><h3>Ambient adaptation</h3><p>Optionally adapt each display's brightness to its own on-screen content, so dark and bright scenes stay comfortable.</p></div>
+            </div>
+            <div class="feature-row fade-in">
+                <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div>
+                <div class="feature-row__body"><h3>Night Shift &amp; True Tone control</h3><p>Toggle and tune the system color features alongside Corvus Display's own warmth, from one place.</p></div>
+            </div>
+            <div class="feature-row fade-in">
+                <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <div class="feature-row__body"><h3>Private by design</h3><p>No account, no telemetry, no tracking. Corvus Display runs entirely on your Mac and talks to nothing.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why" id="why">
+        <div class="section-label fade-in">Why Corvus Display</div>
+        <h2 class="section-title gradient-text fade-in">Apple-grade control for every screen</h2>
+        <div class="why-grid">
+            <div class="why-card fade-in">
+                <h3>Made for non-Apple displays</h3>
+                <p>macOS gives third-party monitors almost no control. Corvus Display brings brightness, color, and resolution adjustment to the displays Apple forgot.</p>
+            </div>
+            <div class="why-card fade-in">
+                <h3>Natively macOS</h3>
+                <p>Built from the ground up in SwiftUI and AppKit. A real menu-bar app that feels like part of the system, not a cross-platform port.</p>
+            </div>
+            <div class="why-card fade-in">
+                <h3>Private by design</h3>
+                <p>No account. No telemetry. No cloud. Your setup never leaves your Mac, and there is no server for us to watch you with.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="section-label fade-in">Pricing</div>
+        <h2 class="section-title gradient-text fade-in">One price. Every feature.</h2>
+        <div class="pricing-card fade-in">
+            <div class="pricing-badge">14-Day Free Trial</div>
+            <h3>Corvus Display</h3>
+            <div class="price">$6.99</div>
+            <div class="price-sub">One-time purchase &middot; No subscription</div>
+            <ul class="pricing-features">
+                <li>Every feature, no tiers</li>
+                <li>Brightness, color, and resolution control</li>
+                <li>Per-app profiles and presets</li>
+                <li>Keep awake, sleep timer, hotkeys</li>
+                <li>Multi-display and mirroring</li>
+                <li>Free updates</li>
+                <li>14-day free trial, no credit card</li>
+            </ul>
+            <button class="pricing-btn" id="buy" onclick="openCheckout()">Buy Corvus Display</button>
+            <a href="https://github.com/CorvusDevs/CorvusDisplay/releases/latest" class="pricing-trial">or start the 14-day free trial</a>
+        </div>
+    </section>
+
+    <p class="req">Requires macOS 14.0 Sonoma or later &middot; Apple Silicon</p>
+
+    <!-- Success Overlay (shown after purchase) -->
+    <div class="success-overlay" id="success-overlay">
+        <div class="success-card">
+            <div class="icon">&#127881;</div>
+            <h2>Welcome to Corvus Display</h2>
+            <p class="sub">Your license key is ready. Copy it and paste it into the app.</p>
+            <div class="license-key-box">
+                <label>License Key</label>
+                <code id="license-key-display">&nbsp;</code>
+                <button class="copy-btn" onclick="copyLicenseKey()">Copy</button>
+            </div>
+            <div class="email-notice">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span>A copy has also been sent to your email.</span>
+            </div>
+            <div class="actions">
+                <a href="https://github.com/CorvusDevs/CorvusDisplay/releases/latest" class="primary">Download Corvus Display</a>
+                <button class="secondary" onclick="closeSuccess()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo">Corvus <span>Display</span></div>
+                <p>Brightness, color, and resolution control for every Mac display.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <a href="#features">Features</a>
+                <a href="#why">Why Corvus</a>
+                <a href="#pricing">Pricing</a>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <a href="mailto:corvusdevs@outlook.com">Contact</a>
+                <a href="https://github.com/CorvusDevs/CorvusDisplay/issues">Report a Bug</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="https://corvusdevs.github.io/privacy.html">Privacy</a>
+                <a href="https://corvusdevs.github.io/terms.html">Terms</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 CorvusDevs. All rights reserved.</p>
+            <div class="footer-socials">
+                <a href="https://github.com/CorvusDevs" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Paddle.js (Billing / v2) -->
+    <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+    <script>
+        // Account-level client-side token (shared across CorvusDevs products); the
+        // price id is what selects Corvus Display.
+        const PADDLE_CLIENT_TOKEN = 'live_56066aaf7cbe507b874f560dbcd';
+        const PADDLE_PRICE_ID     = 'pri_01kvhcxj78g4g2phtp0qtsb16j';
+        const PADDLE_ENVIRONMENT  = 'production';
+
+        Paddle.Environment.set(PADDLE_ENVIRONMENT);
+        Paddle.Initialize({
+            token: PADDLE_CLIENT_TOKEN,
+            eventCallback: function(event) {
+                if (event.name === 'checkout.completed') {
+                    handleCheckoutCompleted(event.data);
+                }
+            }
+        });
+
+        function openCheckout() {
+            Paddle.Checkout.open({ items: [{ priceId: PADDLE_PRICE_ID, quantity: 1 }] });
+        }
+
+        // The Paddle transaction id IS the license key (the worker mints it under
+        // that id), so we can show it immediately without waiting for the email.
+        function handleCheckoutCompleted(data) {
+            const txnId = data && data.transaction_id ? data.transaction_id : '';
+            if (txnId) document.getElementById('license-key-display').textContent = txnId;
+            document.getElementById('success-overlay').classList.add('visible');
+        }
+
+        function copyLicenseKey() {
+            const key = document.getElementById('license-key-display').textContent;
+            navigator.clipboard.writeText(key).then(function() {
+                const btn = document.querySelector('.copy-btn');
+                const prev = btn.textContent;
+                btn.textContent = 'Copied';
+                setTimeout(function(){ btn.textContent = prev; }, 1600);
+            });
+        }
+
+        function closeSuccess() {
+            document.getElementById('success-overlay').classList.remove('visible');
+        }
+
+        // Reveal-on-scroll for .fade-in elements.
+        (function() {
+            const els = document.querySelectorAll('.fade-in');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function(el){ el.classList.add('visible'); });
+                return;
+            }
+            const io = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) {
+                    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+                });
+            }, { threshold: 0.12 });
+            els.forEach(function(el){ io.observe(el); });
+        })();
+    </script>
+</body>
+</html>

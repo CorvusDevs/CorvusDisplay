@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>Corvus Display</title>
+        <link>https://corvusdevs.github.io/CorvusDisplay/appcast.xml</link>
+        <description>Most recent updates to Corvus Display.</description>
+        <language>en</language>
+        <item>
+            <title>Version 0.9.0</title>
+            <pubDate>Sat, 20 Jun 2026 13:22:17 +0000</pubDate>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[Hardware brightness over DDC, software and overlay dimming, color profiles, presets, schedules, and a simpler default screen.]]></description>
+            <enclosure url="https://github.com/CorvusDevs/CorvusDisplay/releases/download/v0.9.0/CorvusDisplay-0.9.0.zip" sparkle:version="1" sparkle:shortVersionString="0.9.0" sparkle:edSignature="vDa9QEngOLeX2b+f7KKqCm9BaAtWqR/I9AARg+yNgcN8k1x4qS4VfhXEQ47wBXx2m5jTbO5859AyCrcI9V/ICg==" length="7773189" type="application/octet-stream" />
+        </item>
+        <!-- release.sh inserts each <item> right after this line.
+             Reminder: sparkle:version MUST be the CFBundleVersion (build number),
+             and the enclosure URL is pinned to the release tag, never /latest. -->
+    </channel>
+</rss>
