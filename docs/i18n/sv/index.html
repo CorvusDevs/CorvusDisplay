@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <script>window.__corvusAppsPromise=fetch('https://corvusdevs.github.io/apps.json',{cache:'default'}).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;});</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Corvus Display: Brightness &amp; Color Control for Any Mac Display</title>
-    <meta name="description" content="Full brightness, color temperature, and resolution control for external and non-Apple displays on Apple Silicon Macs. Hardware DDC where available, smooth software dimming everywhere else. 14-day free trial.">
-    <link rel="canonical" href="https://corvusdevs.github.io/CorvusDisplay/">
+    <title>Corvus Display: Ljusstyrning och färgkontroll för alla Mac-skärmar</title>
+    <meta name="description" content="Fullständig kontroll över ljusstyrka, färgtemperatur och upplösning för externa och icke-Apple-skärmar på Apple Silicon Macar, med hårdvaru-DDD där det finns tillgängligt och mjukvarudimming överallt annars, samt en 14 dagars gratis provperiod.">
+    <link rel="canonical" href="https://corvusdevs.github.io/CorvusDisplay/i18n/sv/">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://corvusdevs.github.io/CorvusDisplay/">
-    <meta property="og:title" content="Corvus Display: Brightness &amp; Color Control for Any Mac Display">
-    <meta property="og:description" content="Control brightness, color temperature, and resolution on external and non-Apple displays. Built for Apple Silicon. 14-day free trial.">
+    <meta property="og:url" content="https://corvusdevs.github.io/CorvusDisplay/i18n/sv/">
+    <meta property="og:title" content="Corvus Display: Ljusstyrning och färgkontroll för alla Mac-skärmar">
+    <meta property="og:description" content="Fullständig kontroll över ljusstyrka, färgtemperatur och upplösning för externa och icke-Apple-skärmar på Apple Silicon Macar, med hårdvaru-DDD där det finns tillgängligt och mjukvarudimming överallt annars, samt en 14 dagars gratis provperiod.">
     <meta property="og:image" content="https://corvusdevs.github.io/CorvusDisplay/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:locale" content="en_US">
+    <meta property="og:locale" content="sv_SE">
     <meta property="og:site_name" content="CorvusDevs">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Corvus Display: Brightness &amp; Color Control for Any Mac Display">
-    <meta name="twitter:description" content="Brightness, color temperature, and resolution control for external and non-Apple displays. Built for Apple Silicon.">
+    <meta name="twitter:title" content="Corvus Display: Ljusstyrning och färgkontroll för alla Mac-skärmar">
+    <meta name="twitter:description" content="Fullständig kontroll över ljusstyrka, färgtemperatur och upplösning för externa och icke-Apple-skärmar på Apple Silicon Macar, med hårdvaru-DDD där det finns tillgängligt och mjukvarudimming överallt annars, samt en 14 dagars gratis provperiod.">
     <meta name="twitter:image" content="https://corvusdevs.github.io/CorvusDisplay/og-image.png">
     <meta name="robots" content="index, follow">
     <meta name="keywords" content="display control, brightness, ddc, color temperature, macos, external monitor, non-apple display, apple silicon, hidpi, lunar, betterdisplay">
@@ -68,9 +68,9 @@
         "author": { "@type": "Organization", "name": "CorvusDevs", "url": "https://corvusdevs.github.io" }
     }
     </script>
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://corvusdevs.github.io/CorvusDisplay/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://corvusdevs.github.io/CorvusDisplay/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://corvusdevs.github.io/CorvusDisplay/apple-touch-icon.png">
     <style>
         /* ac-no-horizontal-scroll v1 */
         html, body { overflow-x: clip; max-width: 100%; }
@@ -304,12 +304,12 @@
         <!-- ac-nav-hamburger v2 --><button class="nav-toggle" aria-label="Menu" aria-expanded="false" onclick="var o=document.body.classList.toggle('nav-open');this.setAttribute('aria-expanded',o);event.stopPropagation();"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button>
         <div class="nav-right">
             <ul class="nav-links">
-                <li><a href="#features" data-i18n="nav_features">Features</a></li>
-                <li><a href="#why" data-i18n="nav_why">Why Corvus</a></li>
-                <li><a href="#pricing" data-i18n="nav_pricing">Pricing</a></li>
+                <li><a href="#features" data-i18n="nav_features">Funktioner</a></li>
+                <li><a href="#why" data-i18n="nav_why">Varför Corvus</a></li>
+                <li><a href="#pricing" data-i18n="nav_pricing">Pris</a></li>
             </ul>
             <div class="lang-wrap">
-                <button class="lang-btn" id="lang-btn" aria-label="Language" onclick="var m=document.getElementById('lang-menu');m.classList.toggle('open');event.stopPropagation();"><span class="lang-glyph">文A</span> <span id="lang-current">English</span></button>
+                <button class="lang-btn" id="lang-btn" aria-label="Language" onclick="var m=document.getElementById('lang-menu');m.classList.toggle('open');event.stopPropagation();"><span class="lang-glyph">文A</span> <span id="lang-current">Svenska</span></button>
                 <div class="lang-menu" id="lang-menu"><a href="https://corvusdevs.github.io/CorvusDisplay/" class="active"><img src="https://corvusdevs.github.io/CorvusDisplay/flags/en.svg" alt="" width="20" height="14" loading="lazy">English</a>
 <a href="https://corvusdevs.github.io/CorvusDisplay/i18n/ar/"><img src="https://corvusdevs.github.io/CorvusDisplay/flags/ar.svg" alt="" width="20" height="14" loading="lazy">العربية</a>
 <a href="https://corvusdevs.github.io/CorvusDisplay/i18n/cs/"><img src="https://corvusdevs.github.io/CorvusDisplay/flags/cs.svg" alt="" width="20" height="14" loading="lazy">Čeština</a>
@@ -349,182 +349,182 @@
     </nav>
 
     <section class="hero">
-        <img src="icon.png" alt="Corvus Display" class="hero-icon">
+        <img src="https://corvusdevs.github.io/CorvusDisplay/icon.png" alt="Corvus Display" class="hero-icon">
         <h1>Corvus Display <span class="beta-tag">Beta</span></h1>
-        <p class="subtitle" data-i18n="hero_sub">Full brightness, color temperature, and resolution control for external and non-Apple displays. Hardware DDC where it is available, smooth software dimming everywhere else, all from your menu bar.</p>
+        <p class="subtitle" data-i18n="hero_sub">Fullständig kontroll över ljusstyrka, färgtemperatur och upplösning för externa och icke-Apple-skärmar, med hårdvaru-DDD där det finns tillgängligt och mjukvarudimming överallt annars, allt från ditt menyrad.</p>
         <a href="https://github.com/CorvusDevs/CorvusDisplay/releases/latest" class="hero-cta" id="hero-download">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            <span data-i18n="hero_cta">Free Download</span>
+            <span data-i18n="hero_cta">Gratis nedladdning</span>
         </a>
-        <span class="hero-free" data-i18n="hero_free">14-day free trial &middot; No credit card &middot; macOS 14+ &middot; Apple Silicon</span>
+        <span class="hero-free" data-i18n="hero_free">14 dagars gratisperiod · Ingen kreditkort · macOS 14+ · Apple Silicon</span>
     </section>
 
     <section class="features" id="features">
-        <div class="section-label fade-in" data-i18n="sec_features">Features</div>
-        <h2 class="section-title gradient-text fade-in" data-i18n="sec_features_title">Control the displays macOS ignores</h2>
+        <div class="section-label fade-in" data-i18n="sec_features">Funktioner</div>
+        <h2 class="section-title gradient-text fade-in" data-i18n="sec_features_title">Kontrollera de skärmar som macOS ignorerar</h2>
         <div class="features-grid">
             <div class="feature-card fade-in">
                 <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.2" y1="4.2" x2="5.6" y2="5.6"/><line x1="18.4" y1="18.4" x2="19.8" y2="19.8"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.2" y1="19.8" x2="5.6" y2="18.4"/><line x1="18.4" y1="5.6" x2="19.8" y2="4.2"/></svg></div>
-                <h3 data-i18n="f_brightness_t">Brightness, Any Display</h3>
-                <p data-i18n="f_brightness_d">Dim or brighten external and non-Apple monitors that macOS normally locks. Hardware DDC control when the panel supports it, seamless software dimming when it does not.</p>
+                <h3 data-i18n="f_brightness_t">Ljusstyrka, Alla skärmar</h3>
+                <p data-i18n="f_brightness_d">Minska eller öka ljusstyrkan på externa och icke-Apple-skärmar som macOS normalt låser, med hårdvarukontroll via DDC när panelen stöder det och sömlös mjukvaruminskning när det inte gör det.</p>
             </div>
             <div class="feature-card fade-in">
                 <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 0 12 6 6 0 0 1 0 6 9 9 0 0 1 0-18z"/></svg></div>
-                <h3 data-i18n="f_subzero_t">Go Darker Than the Minimum</h3>
-                <p data-i18n="f_subzero_d">A gamma and overlay dimming layer takes the screen well below the panel's hardware floor for comfortable late-night brightness, without a washed-out backlight glow.</p>
+                <h3 data-i18n="f_subzero_t">Gå mörkare än minimum</h3>
+                <p data-i18n="f_subzero_d">Ett lager för dämpning av gamma och överlagring sänker skärmbilden väl under panelens hårdvarubotten för behaglig nattljusstyrka utan en utvattnad belysning.</p>
             </div>
             <div class="feature-card fade-in">
                 <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg></div>
-                <h3 data-i18n="f_color_t">Color Temperature</h3>
-                <p data-i18n="f_color_d">Warm the screen for night, cool it for day. Smooth color temperature on every connected display, set independently per monitor, with Warm, Paper, and Dark-room tints.</p>
+                <h3 data-i18n="f_color_t">Färgtemperatur</h3>
+                <p data-i18n="f_color_d">Värm skärmen för natt, kyl den för dag. Minska färgtemperaturen jämnt på alla anslutna skärmar, ställ in per skärm, med varma, pappers- och mörkrumstön.</p>
             </div>
             <div class="feature-card fade-in">
                 <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2a10 10 0 1 0 0 20c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1-.25-.27-.39-.62-.39-1 0-.83.67-1.5 1.5-1.5H16a6 6 0 0 0 6-6c0-5.52-4.48-10-10-10z"/></svg></div>
-                <h3 data-i18n="f_profiles_t">Color Profiles</h3>
-                <p data-i18n="f_profiles_d">Assign any installed ICC color profile per display and switch between them in a click, so each monitor renders color exactly the way you want.</p>
+                <h3 data-i18n="f_profiles_t">Färgprofiler</h3>
+                <p data-i18n="f_profiles_d">Tilldela ett valfritt installerat ICC-färgprofil per skärm och växla mellan dem med ett klick, så att varje monitor återger färgen exakt som du vill.</p>
             </div>
             <div class="feature-card fade-in">
                 <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-                <h3 data-i18n="f_res_t">Resolution &amp; HiDPI</h3>
-                <p data-i18n="f_res_d">Unlock crisp HiDPI scaling and resolutions your display can do but macOS hides, including retina-style modes on non-Apple panels.</p>
+                <h3 data-i18n="f_res_t">Upplösning &amp; HiDPI</h3>
+                <p data-i18n="f_res_d">Lås in skarp HiDPI-skalering och upplösningar som din skärm klarar av men macOS gömmer, inklusive retinala lägen för icke-Apple-paneler.</p>
             </div>
             <div class="feature-card fade-in">
                 <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></div>
-                <h3 data-i18n="f_perapp_t">Per-App Profiles</h3>
-                <p data-i18n="f_perapp_d">Bind a brightness level or a full preset to an app. Corvus Display applies it automatically the moment that app comes forward.</p>
+                <h3 data-i18n="f_perapp_t">Programprofil</h3>
+                <p data-i18n="f_perapp_d">Bind en ljusstyrkenivå eller ett helt förinställt tillstånd till en app; Corvus Display tillämpar det automatiskt så snart appen kommer i framgrunden.</p>
             </div>
             <div class="feature-card fade-in">
                 <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></div>
-                <h3 data-i18n="f_presets_t">Presets</h3>
-                <p data-i18n="f_presets_d">One click switches brightness, warmth, and color profile together. Ready-made Reading, Movie, Gaming, and Evening presets, plus your own.</p>
+                <h3 data-i18n="f_presets_t">Förinställningar</h3>
+                <p data-i18n="f_presets_d">Ett klick byter ljusstyrka, värme och färgprofil samtidigt. Färdiga förinställningar för läsning, filmer, spel, kvällstid samt dina egna.</p>
             </div>
             <div class="feature-card fade-in">
                 <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg></div>
-                <h3 data-i18n="f_sched_t">Schedules &amp; Clock Mode</h3>
-                <p data-i18n="f_sched_d">Ramp brightness and warmth across the day from your sunrise and sunset, so the screen eases warmer and dimmer into the evening on its own.</p>
+                <h3 data-i18n="f_sched_t">Schema och klockläge</h3>
+                <p data-i18n="f_sched_d">Öka ljusstyrkan och värmen över dagen från din soluppgång och solnedgång, så att skärmen automatiskt blir varmare och mörkare på kvällen.</p>
             </div>
             <div class="feature-card fade-in">
                 <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg></div>
-                <h3 data-i18n="f_auto_t">Auto-Brightness</h3>
-                <p data-i18n="f_auto_d">Follow the Mac's ambient light sensor, or adapt each display to its own on-screen content so dark and bright scenes stay comfortable.</p>
+                <h3 data-i18n="f_auto_t">Automatisk ljusstyrka</h3>
+                <p data-i18n="f_auto_d">Följ Mac:ns ljussensor eller anpassa varje skärm för dess innehåll så att mörka och ljusa scener känns bekväma.</p>
             </div>
         </div>
 
         <div class="features-list">
             <div class="feature-row fade-in">
                 <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
-                <div class="feature-row__body"><h3 data-i18n="r_awake_t">Keep awake</h3><p data-i18n="r_awake_d">Stop the display from sleeping during long reads or presentations, optionally only while a chosen app is running.</p></div>
+                <div class="feature-row__body"><h3 data-i18n="r_awake_t">Håll vak</h3><p data-i18n="r_awake_d">Stoppa skärmen från att gå i viloläge under långa läsningar eller presentationer, endast medan ett valt program är aktivt.</p></div>
             </div>
             <div class="feature-row fade-in">
                 <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg></div>
-                <div class="feature-row__body"><h3 data-i18n="r_sleep_t">Sleep timer</h3><p data-i18n="r_sleep_d">Send the screen, or the whole Mac, to sleep after a countdown, with lock, restart, and shut down options built in.</p></div>
+                <div class="feature-row__body"><h3 data-i18n="r_sleep_t">Sovtidslarm</h3><p data-i18n="r_sleep_d">Skärmen eller hela Macen sätts i viloläge efter en räknegång, med inbyggda alternativ för låsning, omstart och avstängning.</p></div>
             </div>
             <div class="feature-row fade-in">
                 <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="14" height="10" rx="1"/><rect x="10" y="11" width="12" height="8" rx="1"/></svg></div>
-                <div class="feature-row__body"><h3 data-i18n="r_multi_t">Multi-display &amp; mirroring</h3><p data-i18n="r_multi_d">Independent control for every monitor, mirroring with an automatic safety net, and a visual arrangement view for multi-display setups.</p></div>
+                <div class="feature-row__body"><h3 data-i18n="r_multi_t">Flerskärm och spegling</h3><p data-i18n="r_multi_d">Oberoende styrning för varje skärm, spegling med automatisk säkerhetsnät och en visuell vy för arrangemang av flera skärmar.</p></div>
             </div>
             <div class="feature-row fade-in">
                 <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="4.2" y1="10.2" x2="5.6" y2="11.6"/><line x1="1" y1="18" x2="3" y2="18"/><line x1="21" y1="18" x2="23" y2="18"/><line x1="18.4" y1="11.6" x2="19.8" y2="10.2"/></svg></div>
-                <div class="feature-row__body"><h3 data-i18n="r_nightshift_t">Night Shift &amp; True Tone, in one place</h3><p data-i18n="r_nightshift_d">Toggle and tune the system color features alongside Corvus Display's own warmth and a one-click Dark Mode switch.</p></div>
+                <div class="feature-row__body"><h3 data-i18n="r_nightshift_t">Nattskift och True Tone, på en plats</h3><p data-i18n="r_nightshift_d">Växla och justera systemfärgfunktionerna tillsammans med Corvus Displays egen värme och en knapp för mörkt läge.</p></div>
             </div>
             <div class="feature-row fade-in">
                 <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-                <div class="feature-row__body"><h3 data-i18n="r_rgb_t">Fix washed-out monitors</h3><p data-i18n="r_rgb_d">Force full RGB range and 8-bit color to correct the dull, grey look some displays show over HDMI and USB-C.</p></div>
+                <div class="feature-row__body"><h3 data-i18n="r_rgb_t">Åtgärda blekta skärmar</h3><p data-i18n="r_rgb_d">Tvinga full RGB-omfång och 8-bitars färg för att korrigera den bleka, gråa tonen som vissa skärmar visar över HDMI och USB-C.</p></div>
             </div>
             <div class="feature-row fade-in">
                 <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.2 4.2l2.8 2.8M17 17l2.8 2.8M1 12h4M19 12h4M4.2 19.8L7 17M17 7l2.8-2.8"/></svg></div>
-                <div class="feature-row__body"><h3 data-i18n="r_ddc_t">Hardware DDC controls</h3><p data-i18n="r_ddc_d">Drive the monitor's own contrast, volume, and input source over DDC, so you can switch inputs and tune the panel without its clunky on-screen buttons.</p></div>
+                <div class="feature-row__body"><h3 data-i18n="r_ddc_t">Hårdvarus DDC-kontroller</h3><p data-i18n="r_ddc_d">Styr monitorens egen kontrast, volym och inmatningskälla via DDC så att du kan byta inmatning och justera panelen utan dess klumpiga knappar på skärmen.</p></div>
             </div>
             <div class="feature-row fade-in">
                 <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="2" y1="3" x2="22" y2="17"/></svg></div>
-                <div class="feature-row__body"><h3 data-i18n="r_blackout_t">Black out and FaceLight</h3><p data-i18n="r_blackout_d">Blank a display you are not using to save power and distraction, or flood the screen with warm light for a flattering video call.</p></div>
+                <div class="feature-row__body"><h3 data-i18n="r_blackout_t">Svarta ut och FaceLight</h3><p data-i18n="r_blackout_d">Töm en display du inte använder för att spara energi och minska distraktioner, eller fyll skärmen med varmt ljus för en fläktande videoanrop.</p></div>
             </div>
             <div class="feature-row fade-in">
                 <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="7" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="17" cy="12" r="1"/></svg></div>
-                <div class="feature-row__body"><h3 data-i18n="r_menubar_t">Menu bar, hotkeys, and media keys</h3><p data-i18n="r_menubar_d">Everything lives in the menu bar. Use global keyboard shortcuts, scroll on the menu-bar icon, or the brightness keys to drive external displays.</p></div>
+                <div class="feature-row__body"><h3 data-i18n="r_menubar_t">Menyrad, genvägar och medieknappar</h3><p data-i18n="r_menubar_d">Allt finns i menyraden. Använd globala tangentbordsgenvägar, scrolla på ikonen i menyraden eller använd ljusstyrkeknapparna för att styra externa skärmar.</p></div>
             </div>
             <div class="feature-row fade-in">
                 <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.5 6.5L21 9l-5 4 1.5 7L12 16l-5.5 4L8 13 3 9l6.5-.5z"/></svg></div>
-                <div class="feature-row__body"><h3 data-i18n="r_shortcuts_t">Shortcuts &amp; automation</h3><p data-i18n="r_shortcuts_d">App Intents and a local control API let Shortcuts, scripts, and Stream Deck-style tools set brightness, presets, and more.</p></div>
+                <div class="feature-row__body"><h3 data-i18n="r_shortcuts_t">Genvägar &amp; automatisering</h3><p data-i18n="r_shortcuts_d">App-intent och en lokal kontroll-API låter genvägar, skript och verktyg i stil med Stream Deck ställa in ljusstyrka, förinställningar och mer.</p></div>
             </div>
             <div class="feature-row fade-in">
                 <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20"/></svg></div>
-                <div class="feature-row__body"><h3 data-i18n="r_langs_t">33 languages</h3><p data-i18n="r_langs_d">Fully localized, with a built-in language picker. Right-to-left support for Arabic and Hebrew.</p></div>
+                <div class="feature-row__body"><h3 data-i18n="r_langs_t">33 språk</h3><p data-i18n="r_langs_d">Fullständigt översatt med en inbyggd språkvalare och stöd för höger-til-vänster-läggning för arabiska och hebreiska.</p></div>
             </div>
             <div class="feature-row fade-in">
                 <div class="feature-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7ff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-                <div class="feature-row__body"><h3 data-i18n="r_privacy_t">Private by design</h3><p data-i18n="r_privacy_d">No account, no telemetry, no tracking. Corvus Display runs entirely on your Mac and talks to nothing.</p></div>
+                <div class="feature-row__body"><h3 data-i18n="r_privacy_t">Privat av design</h3><p data-i18n="r_privacy_d">Inget konto, ingen telemetri, ingen spårning. Corvus Display körs helt på din Mac och kommunicerar med inget.</p></div>
             </div>
         </div>
     </section>
 
     <section class="why" id="why">
-        <div class="section-label fade-in" data-i18n="sec_why">Why Corvus Display</div>
-        <h2 class="section-title gradient-text fade-in" data-i18n="sec_why_title">Apple-grade control for every screen</h2>
+        <div class="section-label fade-in" data-i18n="sec_why">Varför Corvus Display</div>
+        <h2 class="section-title gradient-text fade-in" data-i18n="sec_why_title">Apple-klassisk kontroll för varje skärm</h2>
         <div class="why-grid">
             <div class="why-card fade-in">
-                <h3 data-i18n="why1_t">Made for non-Apple displays</h3>
-                <p data-i18n="why1_d">macOS gives third-party monitors almost no control. Corvus Display brings brightness, color, and resolution adjustment to the displays Apple forgot.</p>
+                <h3 data-i18n="why1_t">Skapad för icke-Apple-skärmar</h3>
+                <p data-i18n="why1_d">Corvus Display ger nästan ingen kontroll över tredjepartsskärmar i macOS; den tillför justeringar av ljusstyrka, färg och upplösning för de skärmar Apple glömt.</p>
             </div>
             <div class="why-card fade-in">
-                <h3 data-i18n="why2_t">Natively macOS</h3>
-                <p data-i18n="why2_d">Built from the ground up in SwiftUI and AppKit. A real menu-bar app that feels like part of the system, not a cross-platform port.</p>
+                <h3 data-i18n="why2_t">Innat macOS</h3>
+                <p data-i18n="why2_d">Byggd från grunden i SwiftUI och AppKit, en riktig menyfältapp som känns som en del av systemet, inte en kryssplattformspört.</p>
             </div>
             <div class="why-card fade-in">
-                <h3 data-i18n="why3_t">Private by design</h3>
-                <p data-i18n="why3_d">No account. No telemetry. No cloud. Your setup never leaves your Mac, and there is no server for us to watch you with.</p>
+                <h3 data-i18n="why3_t">Privat av design</h3>
+                <p data-i18n="why3_d">Inget konto, ingen telemetri, ingen molnet. Dina data lämnar aldrig din Mac, och vi har ingen server som övervakar dig.</p>
             </div>
         </div>
     </section>
 
     <section class="pricing" id="pricing">
-        <div class="section-label fade-in" data-i18n="sec_pricing">Pricing</div>
-        <h2 class="section-title gradient-text fade-in" data-i18n="sec_pricing_title">One price. Every feature.</h2>
+        <div class="section-label fade-in" data-i18n="sec_pricing">Pris</div>
+        <h2 class="section-title gradient-text fade-in" data-i18n="sec_pricing_title">Ett pris. Alla funktioner.</h2>
         <div class="pricing-card fade-in">
-            <div class="pricing-badge" data-i18n="pricing_badge">14-Day Free Trial</div>
+            <div class="pricing-badge" data-i18n="pricing_badge">14-dagars kostnadsfri provperiod</div>
             <h3>Corvus Display</h3>
             <div class="price">$6.99</div>
-            <div class="price-sub" data-i18n="pricing_sub">One-time purchase &middot; No subscription</div>
+            <div class="price-sub" data-i18n="pricing_sub">Engångsköp, ingen prenumeration</div>
             <ul class="pricing-features">
-                <li data-i18n="pf1">Every feature, no tiers</li>
-                <li data-i18n="pf2">Brightness, color, and resolution control</li>
-                <li data-i18n="pf3">Per-app profiles and presets</li>
-                <li data-i18n="pf4">Keep awake, sleep timer, hotkeys</li>
-                <li data-i18n="pf5">Multi-display and mirroring</li>
-                <li data-i18n="pf6">Free updates</li>
-                <li data-i18n="pf7">14-day free trial, no credit card</li>
+                <li data-i18n="pf1">Alla funktioner, inga nivåer</li>
+                <li data-i18n="pf2">Ljusstyrka, färg och upplösning</li>
+                <li data-i18n="pf3">Programspecifika profiler och förinställningar</li>
+                <li data-i18n="pf4">Håll vakna, sömntimer, genvägar</li>
+                <li data-i18n="pf5">Flerskärm och spegling</li>
+                <li data-i18n="pf6">Gratisuppdateringar</li>
+                <li data-i18n="pf7">14 dagars gratisprov, inget kreditkort</li>
             </ul>
-            <button class="pricing-btn" id="buy" onclick="openCheckout()" data-i18n="pricing_buy">Buy Corvus Display</button>
-            <a href="https://github.com/CorvusDevs/CorvusDisplay/releases/latest" class="pricing-trial" data-i18n="pricing_trial">or download the 14-day free trial</a>
+            <button class="pricing-btn" id="buy" onclick="openCheckout()" data-i18n="pricing_buy">Köp Corvus-display</button>
+            <a href="https://github.com/CorvusDevs/CorvusDisplay/releases/latest" class="pricing-trial" data-i18n="pricing_trial">eller ladda ner 14 dagars kostnadsfri provperiod</a>
         </div>
     </section>
 
-    <p class="req" data-i18n="req">Requires macOS 14.0 Sonoma or later &middot; Apple Silicon</p>
+    <p class="req" data-i18n="req">Kräver macOS 14.0 Sonoma eller senare Apple Silicon</p>
 
     <div class="success-overlay" id="success-overlay">
         <div class="success-card">
             <div class="icon">&#127881;</div>
-            <h2 data-i18n="success_title">Welcome to Corvus Display</h2>
-            <p class="sub" data-i18n="success_sub">Your license key is ready. Copy it and paste it into the app.</p>
+            <h2 data-i18n="success_title">Välkommen till Corvus Display</h2>
+            <p class="sub" data-i18n="success_sub">Din licensnyckel är redo. Kopiera den och klistra in den i appen.</p>
             <div class="license-key-box">
-                <label data-i18n="success_keylabel">License Key</label>
+                <label data-i18n="success_keylabel">Licensnyckel</label>
                 <code id="license-key-display">&nbsp;</code>
-                <button class="copy-btn" onclick="copyLicenseKey()" data-i18n="success_copy">Copy</button>
+                <button class="copy-btn" onclick="copyLicenseKey()" data-i18n="success_copy">Kopiera</button>
             </div>
             <div class="email-notice">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                <span data-i18n="success_email">A copy has also been sent to your email.</span>
+                <span data-i18n="success_email">En kopia har också skickats till din e-postadress.</span>
             </div>
             <div class="actions">
-                <a href="https://github.com/CorvusDevs/CorvusDisplay/releases/latest" class="primary" data-i18n="success_download">Download Corvus Display</a>
-                <button class="secondary" onclick="closeSuccess()" data-i18n="success_close">Close</button>
+                <a href="https://github.com/CorvusDevs/CorvusDisplay/releases/latest" class="primary" data-i18n="success_download">Ladda ner Corvus Display</a>
+                <button class="secondary" onclick="closeSuccess()" data-i18n="success_close">Stäng</button>
             </div>
         </div>
     </div>
 
     <section id="corvus-carousel" class="corvus-carousel" aria-labelledby="corvus-carousel-title" data-current-slug="CorvusDisplay">
-        <h2 id="corvus-carousel-title" class="corvus-carousel__title" data-i18n="carousel_title">More from CorvusDevs</h2>
-        <p class="corvus-carousel__sub" data-i18n="carousel_sub">Privacy-first apps for macOS, iOS, and Safari.</p>
+        <h2 id="corvus-carousel-title" class="corvus-carousel__title" data-i18n="carousel_title">Mer från CorvusDevs</h2>
+        <p class="corvus-carousel__sub" data-i18n="carousel_sub">Privatfokuserade appar för macOS, iOS och Safari.</p>
         <div class="corvus-carousel__viewport">
             <button class="corvus-carousel__nav corvus-carousel__nav--prev" type="button" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6"/></svg></button>
             <div class="corvus-carousel__track" role="list"></div>
@@ -536,27 +536,27 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <div class="logo">Corvus <span>Display</span></div>
-                <p data-i18n="foot_tagline">Brightness, color, and resolution control for every Mac display.</p>
+                <p data-i18n="foot_tagline">Kontrollera ljusstyrka, färg och upplösning för varje Mac-skärm.</p>
             </div>
             <div class="footer-col">
-                <h4 data-i18n="foot_product">Product</h4>
-                <a href="#features" data-i18n="nav_features">Features</a>
-                <a href="#why" data-i18n="nav_why">Why Corvus</a>
-                <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+                <h4 data-i18n="foot_product">Produkt</h4>
+                <a href="#features" data-i18n="nav_features">Funktioner</a>
+                <a href="#why" data-i18n="nav_why">Varför Corvus</a>
+                <a href="#pricing" data-i18n="nav_pricing">Pris</a>
             </div>
             <div class="footer-col">
-                <h4 data-i18n="foot_support">Support</h4>
-                <a href="mailto:corvusdevs@outlook.com" data-i18n="foot_contact">Contact</a>
-                <a href="https://github.com/CorvusDevs/CorvusDisplay/issues" data-i18n="foot_bug">Report a Bug</a>
+                <h4 data-i18n="foot_support">Stöd</h4>
+                <a href="mailto:corvusdevs@outlook.com" data-i18n="foot_contact">Kontakt</a>
+                <a href="https://github.com/CorvusDevs/CorvusDisplay/issues" data-i18n="foot_bug">Rapportera ett fel</a>
             </div>
             <div class="footer-col">
-                <h4 data-i18n="foot_legal">Legal</h4>
-                <a href="https://corvusdevs.github.io/privacy.html" data-i18n="foot_privacy">Privacy</a>
-                <a href="https://corvusdevs.github.io/terms.html" data-i18n="foot_terms">Terms</a>
+                <h4 data-i18n="foot_legal">Juridisk</h4>
+                <a href="https://corvusdevs.github.io/privacy.html" data-i18n="foot_privacy">Integritet</a>
+                <a href="https://corvusdevs.github.io/terms.html" data-i18n="foot_terms">Villkor</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p data-i18n="foot_rights">&copy; 2026 CorvusDevs. All rights reserved.</p>
+            <p data-i18n="foot_rights">© 2026 CorvusDevs. Alla rättigheter reserverade.</p>
             <div class="footer-socials">
                 <a href="https://github.com/CorvusDevs" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg></a>
             </div>
