@@ -28,11 +28,20 @@
 
 ---
 
+<div align="center">
+
+<img src="https://corvusdevs.github.io/CorvusDisplay/screenshots/menu-bar.png" width="320" alt="Corvus Display menu-bar popover with brightness, presets, and sleep timer">
+
+<em>Every control a click or scroll away, from the menu bar.</em>
+
+</div>
+
 The display controls macOS keeps for its own screens, brought to every monitor. Brightness, color temperature, color profiles, and resolution for external and non-Apple displays, all from the menu bar. Native **SwiftUI**, hardware **DDC/CI** where the panel supports it, smooth software dimming everywhere else, and zero tracking. One-time purchase with a 14-day free trial.
 
 ## Contents
 
 - [Features](#features)
+- [Screenshots](#screenshots)
 - [What makes Corvus Display special](#what-makes-corvus-display-special)
 - [Built with](#built-with)
 - [Privacy](#privacy)
@@ -60,6 +69,24 @@ The display controls macOS keeps for its own screens, brought to every monitor. 
 - **Shortcuts and automation.** App Intents and a local control API for Shortcuts, scripts, and Stream Deck-style tools.
 - **33 languages.** Fully localized with a built-in language picker, including right-to-left support for Arabic and Hebrew.
 - **Built for privacy.** No account, no telemetry, no tracking. Runs entirely on your Mac.
+
+## Screenshots
+
+<div align="center">
+
+<img src="https://corvusdevs.github.io/CorvusDisplay/screenshots/displays.png" width="720" alt="Per-display brightness, color, resolution and HiDPI control">
+
+<em>Brightness, color, resolution and HiDPI, independently for every display.</em>
+
+</div>
+
+<table>
+<tr>
+<td width="33%" align="center"><img src="https://corvusdevs.github.io/CorvusDisplay/screenshots/power-comfort.png" alt="Eye comfort and sleep timer"><br><strong>Eye comfort &amp; sleep</strong></td>
+<td width="33%" align="center"><img src="https://corvusdevs.github.io/CorvusDisplay/screenshots/automation.png" alt="Sunrise-to-sunset automation"><br><strong>Day-long automation</strong></td>
+<td width="33%" align="center"><img src="https://corvusdevs.github.io/CorvusDisplay/screenshots/presets.png" alt="One-click display presets"><br><strong>One-click presets</strong></td>
+</tr>
+</table>
 
 ## What makes Corvus Display special
 
