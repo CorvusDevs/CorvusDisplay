@@ -177,10 +177,17 @@
         .why { max-width: 960px; margin: 0 auto; padding: 0 24px 100px; }
         .screenshots { max-width: 1120px; margin: 0 auto; padding: 0 24px 120px; text-align: center; position: relative; }
         .screenshots::before { content: ""; position: absolute; left: 50%; top: 40px; transform: translateX(-50%); width: min(940px, 92%); height: 540px; background: radial-gradient(ellipse at center, rgba(45,127,249,0.16), transparent 70%); filter: blur(55px); pointer-events: none; z-index: 0; }
-        .screenshots .section-label, .screenshots .section-title, .shots-hero, .shots-grid { position: relative; z-index: 1; }
+        .screenshots .section-label, .screenshots .section-title, .shots-menubar, .shots-hero, .shots-grid { position: relative; z-index: 1; }
         .shots-hero { margin: 0 auto 60px; max-width: 900px; }
         .shots-hero img { width: 100%; height: auto; border-radius: 18px; border: 1px solid rgba(255,255,255,0.10); box-shadow: 0 2px 8px rgba(0,0,0,0.4), 0 40px 90px rgba(0,0,0,0.6); }
         .shots-hero p { color: var(--text-secondary); margin-top: 22px; font-size: 17px; line-height: 1.6; }
+        .shots-menubar { max-width: 300px; margin: 0 auto 56px; }
+        .shots-menubar img { width: 100%; height: auto; border-radius: 18px; border: 1px solid rgba(255,255,255,0.10); box-shadow: 0 2px 8px rgba(0,0,0,0.4), 0 40px 90px rgba(0,0,0,0.6); }
+        .shots-menubar p { color: var(--text-secondary); margin-top: 20px; font-size: 16px; line-height: 1.6; }
+        .screenshots img { cursor: zoom-in; }
+        .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.88); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; z-index: 2000; cursor: zoom-out; padding: 32px; opacity: 0; transition: opacity 0.2s ease; }
+        .lightbox.open { display: flex; opacity: 1; }
+        .lightbox img { max-width: 94vw; max-height: 92vh; width: auto; height: auto; border-radius: 14px; border: 1px solid rgba(255,255,255,0.14); box-shadow: 0 40px 100px rgba(0,0,0,0.7); }
         .shots-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; align-items: start; }
         .shots-grid figure { margin: 0; transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); }
         .shots-grid img { width: 100%; height: auto; border-radius: 16px; border: 1px solid rgba(255,255,255,0.10); box-shadow: 0 2px 6px rgba(0,0,0,0.35), 0 24px 50px rgba(0,0,0,0.5); transition: box-shadow 0.3s ease, border-color 0.3s ease; }
@@ -476,6 +483,10 @@
     <section class="screenshots" id="screenshots">
         <div class="section-label fade-in" data-i18n="sec_shots">Screenshot</div>
         <h2 class="section-title gradient-text fade-in" data-i18n="sec_shots_title">Vedi in azione</h2>
+        <div class="shots-menubar fade-in">
+            <img src="https://corvusdevs.github.io/CorvusDisplay/screenshots/menu-bar.png" alt="Corvus Display menu-bar popover" loading="lazy">
+            <p data-i18n="shot_menubar">Ogni controllo, direttamente dalla barra dei menu.</p>
+        </div>
         <div class="shots-hero fade-in">
             <img src="https://corvusdevs.github.io/CorvusDisplay/screenshots/displays.png" alt="Per-display brightness, color, resolution and HiDPI control" loading="lazy">
             <p data-i18n="shot_displays">Luminosità, colore, risoluzione e HiDPI, in modo indipendente per ogni display.</p>
@@ -628,5 +639,7 @@
         }).catch(function(){section.style.display='none';});
     })();
     </script>
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview"><img alt=""></div>
+    <script>(function(){var lb=document.getElementById("lightbox");if(!lb)return;var im=lb.querySelector("img");document.querySelectorAll(".screenshots img").forEach(function(s){s.addEventListener("click",function(){im.src=s.currentSrc||s.src;im.alt=s.alt||"";lb.classList.add("open");});});function c(){lb.classList.remove("open");}lb.addEventListener("click",c);document.addEventListener("keydown",function(e){if(e.key==="Escape")c();});})();</script>
 </body>
 </html>
