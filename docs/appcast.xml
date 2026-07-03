@@ -6,6 +6,13 @@
         <description>Most recent updates to Corvus Display.</description>
         <language>en</language>
         <item>
+            <title>Version 0.9.4</title>
+            <pubDate>Fri, 03 Jul 2026 18:19:05 +0000</pubDate>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[Fixes the brief dimming blink when a video goes full screen. Sub-zero dimming now rides the display gamma pipeline, which survives Space transitions, and automatically falls back to the HDR-safe overlay while HDR content or XDR boost is active.]]></description>
+            <enclosure url="https://github.com/CorvusDevs/CorvusDisplay/releases/download/v0.9.4/CorvusDisplay-0.9.4.zip" sparkle:version="5" sparkle:shortVersionString="0.9.4" sparkle:edSignature="EhZe9QD8grVQky8iMmch57RG/a0SQTHROqe/VEYM+jg+6D0qwsikmYgRkjgb0DUi6LKxOKF3cNisUFVKYpDzDw==" length="7959349" type="application/octet-stream" />
+        </item>
+        <item>
             <title>Version 0.9.3</title>
             <pubDate>Mon, 29 Jun 2026 06:14:21 +0000</pubDate>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
