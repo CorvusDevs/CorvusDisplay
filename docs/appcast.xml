@@ -6,6 +6,13 @@
         <description>Most recent updates to Corvus Display.</description>
         <language>en</language>
         <item>
+            <title>Version 0.9.6</title>
+            <pubDate>Thu, 09 Jul 2026 20:04:37 +0000</pubDate>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<ul><li>Software dim now stays put after the display sleeps or you restart</li><li>Switching a monitor to another input now asks for confirmation, to avoid hiding your Mac by accident</li></ul>]]></description>
+            <enclosure url="https://github.com/CorvusDevs/CorvusDisplay/releases/download/v0.9.6/CorvusDisplay-0.9.6.zip" sparkle:version="7" sparkle:shortVersionString="0.9.6" sparkle:edSignature="8jZ9oIyJAIrbWWehsFVrmAwjj4RYqG22/L4C0OrP9G+rHZv1OF5Mlp6gNc/QESeRtiYwMVG5UseUK56MQRyqAA==" length="7969875" type="application/octet-stream" />
+        </item>
+        <item>
             <title>Version 0.9.5</title>
             <pubDate>Thu, 09 Jul 2026 10:37:24 +0000</pubDate>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
