@@ -6,6 +6,13 @@
         <description>Most recent updates to Corvus Display.</description>
         <language>en</language>
         <item>
+            <title>Version 0.9.5</title>
+            <pubDate>Thu, 09 Jul 2026 10:37:24 +0000</pubDate>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[Force RGB now shows a clear Keep or Revert prompt, so it no longer reverts without warning. The Automation settings are no longer hidden behind the status bar, and you can expand any section by clicking its title, not just the arrow.]]></description>
+            <enclosure url="https://github.com/CorvusDevs/CorvusDisplay/releases/download/v0.9.5/CorvusDisplay-0.9.5.zip" sparkle:version="6" sparkle:shortVersionString="0.9.5" sparkle:edSignature="sgMUD4j/qni8Vh9Dy8d44ZROKTBdmHz7gYeOKH9gzTxS0ibRgcN5SR7DH/yq/Opfc/ehY7xtWuCzC3u2CF59Cg==" length="7964987" type="application/octet-stream" />
+        </item>
+        <item>
             <title>Version 0.9.4</title>
             <pubDate>Fri, 03 Jul 2026 18:19:05 +0000</pubDate>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
