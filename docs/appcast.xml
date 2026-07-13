@@ -6,6 +6,13 @@
         <description>Most recent updates to Corvus Display.</description>
         <language>en</language>
         <item>
+            <title>Version 0.9.7</title>
+            <pubDate>Mon, 13 Jul 2026 17:07:47 +0000</pubDate>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<ul><li>The Brightness slider now marks where hardware dimming ends and software dimming takes over</li></ul>]]></description>
+            <enclosure url="https://github.com/CorvusDevs/CorvusDisplay/releases/download/v0.9.7/CorvusDisplay-0.9.7.zip" sparkle:version="8" sparkle:shortVersionString="0.9.7" sparkle:edSignature="ur84LwMslXH3x7/Vy4zXOPnLbgGlDPVrFA3jQ9Pq6Rc9CBL0SzJq1fvhYWwjb3eNld8NHqAtJLMgP/QJnmU4BQ==" length="8455277" type="application/octet-stream" />
+        </item>
+        <item>
             <title>Version 0.9.6</title>
             <pubDate>Thu, 09 Jul 2026 20:04:37 +0000</pubDate>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
