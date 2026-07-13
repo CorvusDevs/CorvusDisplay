@@ -6,6 +6,13 @@
         <description>Most recent updates to Corvus Display.</description>
         <language>en</language>
         <item>
+            <title>Version 0.9.8</title>
+            <pubDate>Mon, 13 Jul 2026 22:04:51 +0000</pubDate>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<ul><li>Fixed dimming below 30% not restoring after the display or Mac wakes from sleep, until you nudged the slider</li></ul>]]></description>
+            <enclosure url="https://github.com/CorvusDevs/CorvusDisplay/releases/download/v0.9.8/CorvusDisplay-0.9.8.zip" sparkle:version="9" sparkle:shortVersionString="0.9.8" sparkle:edSignature="mx+bZKd7yOWRjfePDM8zzoBNqgIt7gMgSpMnfUUBpWdgTk2/AS/2xSo+Cw47rCAya2La82b3fng5qHu4hLo+Aw==" length="7995880" type="application/octet-stream" />
+        </item>
+        <item>
             <title>Version 0.9.7</title>
             <pubDate>Mon, 13 Jul 2026 17:07:47 +0000</pubDate>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
