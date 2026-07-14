@@ -6,6 +6,13 @@
         <description>Most recent updates to Corvus Display.</description>
         <language>en</language>
         <item>
+            <title>Version 0.9.9</title>
+            <pubDate>Tue, 14 Jul 2026 15:14:54 +0000</pubDate>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<ul><li>Dimming now re-applies reliably after the display or Mac wakes, including on monitors that do not report their brightness (it could previously stay at full brightness until you nudged the slider)</li></ul>]]></description>
+            <enclosure url="https://github.com/CorvusDevs/CorvusDisplay/releases/download/v0.9.9/CorvusDisplay-0.9.9.zip" sparkle:version="11" sparkle:shortVersionString="0.9.9" sparkle:edSignature="qKlR+Xv4vzcyejnh/wjuW0TWULBSZetXYxGHtVx9LXJlybMgM/F0LsPeU7Am7gs9Lfp69mlNP7o5DGsDF9rBCg==" length="7998193" type="application/octet-stream" />
+        </item>
+        <item>
             <title>Version 0.9.8</title>
             <pubDate>Mon, 13 Jul 2026 22:04:51 +0000</pubDate>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
