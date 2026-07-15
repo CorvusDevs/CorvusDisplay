@@ -6,6 +6,13 @@
         <description>Most recent updates to Corvus Display.</description>
         <language>en</language>
         <item>
+            <title>Version 0.9.10</title>
+            <pubDate>Wed, 15 Jul 2026 01:46:39 +0000</pubDate>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<ul><li>Refreshed the menu bar icon to the Corvus raven, now sized to match the other menu bar icons</li></ul>]]></description>
+            <enclosure url="https://github.com/CorvusDevs/CorvusDisplay/releases/download/v0.9.10/CorvusDisplay-0.9.10.zip" sparkle:version="13" sparkle:shortVersionString="0.9.10" sparkle:edSignature="nxB41AILsm1WJVe4TjOsHnQkesyNC6m4lnsnu9i1oe5aICUg+Jrdg4F3XqO/8HtlIbog7bWFyazbGIiCgn+3CQ==" length="7997700" type="application/octet-stream" />
+        </item>
+        <item>
             <title>Version 0.9.9</title>
             <pubDate>Tue, 14 Jul 2026 15:14:54 +0000</pubDate>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
