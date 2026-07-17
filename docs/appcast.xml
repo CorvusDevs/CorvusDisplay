@@ -6,6 +6,13 @@
         <description>Most recent updates to Corvus Display.</description>
         <language>en</language>
         <item>
+            <title>Version 0.9.11</title>
+            <pubDate>Fri, 17 Jul 2026 15:40:56 +0000</pubDate>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<ul><li>A redesigned Settings window with every control in clean, consistent rows</li><li>Resolution and refresh rate are now separate menus, and unusable modes are hidden</li><li>Fully translated into 32 languages, from the in-app language picker</li><li>Dimming stays put after your display or Mac wakes from sleep</li><li>A new menu bar icon, the Corvus raven</li></ul>]]></description>
+            <enclosure url="https://github.com/CorvusDevs/CorvusDisplay/releases/download/v0.9.11/CorvusDisplay-0.9.11.zip" sparkle:version="14" sparkle:shortVersionString="0.9.11" sparkle:edSignature="Iyou03X+S4XnUDk9rCH5Cwx30dzXkrelPI34Sd7QhW4OzRfDisk2Cm8pDp3XqFBi9SoCBF2TLUbq2cV3UbrLBA==" length="7166390" type="application/octet-stream" />
+        </item>
+        <item>
             <title>Version 0.9.10</title>
             <pubDate>Wed, 15 Jul 2026 01:46:39 +0000</pubDate>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
